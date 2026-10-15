@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DulciesBolos.Api/DulciesBolos.Api.csproj" />
+    <Project Path="src/DulciesBolos.Application/DulciesBolos.Application.csproj" />
+    <Project Path="src/DulciesBolos.Domain/DulciesBolos.Domain.csproj" />
+    <Project Path="src/DulciesBolos.Infrastructure/DulciesBolos.Infrastructure.csproj" />
+  </Folder>
+</Solution>
