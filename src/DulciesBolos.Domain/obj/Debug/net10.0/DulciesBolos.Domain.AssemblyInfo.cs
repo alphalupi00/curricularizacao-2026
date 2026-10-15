@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DulciesBolos.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffcef3c7f518f830649f533ff8ef04c46dc95221")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84ff25db076a10afc9da857847d2e382b2543695")]
 [assembly: System.Reflection.AssemblyProductAttribute("DulciesBolos.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DulciesBolos.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

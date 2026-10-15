@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj": {}
+    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj": {
+    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj",
+        "projectUniqueName": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj",
         "projectName": "DulciesBolos.Api",
-        "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj",
-        "packagesPath": "C:\\Users\\LABORINFO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Api\\obj\\",
+        "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Api\\DulciesBolos.Api.csproj",
+        "packagesPath": "C:\\Users\\sarah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LABORINFO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sarah\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -29,11 +27,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
-                "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj"
+              "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
+                "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj"
               },
-              "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj"
+              "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj"
               }
             }
           }
@@ -48,7 +46,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -89,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -507,24 +505,22 @@
         }
       }
     },
-    "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
+    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj",
+        "projectUniqueName": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj",
         "projectName": "DulciesBolos.Application",
-        "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj",
-        "packagesPath": "C:\\Users\\LABORINFO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\obj\\",
+        "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj",
+        "packagesPath": "C:\\Users\\sarah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LABORINFO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sarah\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -532,8 +528,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
-                "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj"
+              "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
+                "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj"
               }
             }
           }
@@ -548,7 +544,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -570,7 +566,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -848,24 +844,22 @@
         }
       }
     },
-    "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
+    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj",
         "projectName": "DulciesBolos.Domain",
-        "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj",
-        "packagesPath": "C:\\Users\\LABORINFO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\obj\\",
+        "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj",
+        "packagesPath": "C:\\Users\\sarah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LABORINFO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sarah\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -885,7 +879,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -907,7 +901,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1185,24 +1179,22 @@
         }
       }
     },
-    "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj": {
+    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj",
         "projectName": "DulciesBolos.Infrastructure",
-        "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\LABORINFO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\DulciesBolos.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\sarah\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LABORINFO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sarah\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -1210,11 +1202,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
-                "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj"
+              "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj": {
+                "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Application\\DulciesBolos.Application.csproj"
               },
-              "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
-                "projectPath": "C:\\Users\\LABORINFO\\Downloads\\curricularizacao-2026\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj"
+              "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj": {
+                "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\src\\DulciesBolos.Domain\\DulciesBolos.Domain.csproj"
               }
             }
           }
@@ -1229,7 +1221,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -1267,7 +1259,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

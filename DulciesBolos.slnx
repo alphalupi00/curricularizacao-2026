@@ -5,4 +5,5 @@
     <Project Path="src/DulciesBolos.Domain/DulciesBolos.Domain.csproj" />
     <Project Path="src/DulciesBolos.Infrastructure/DulciesBolos.Infrastructure.csproj" />
   </Folder>
+  <Project Path="dulciesbolos/dulciesbolos.csproj" />
 </Solution>
