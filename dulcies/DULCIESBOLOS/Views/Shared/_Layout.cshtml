@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DULCIES BOLOS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="background">
+   <div style="position: fixed; top: 0; left: 0; width: 100%; height: 1px; background-color: black; z-index: 1001;">
+   </div>
+
+    <nav class="text-white p-3 menu" style="background-color: #ffe4eC; border: 1px solid black; box-sizing: border-box; position: fixed; top: 0; bottom: 0; left: 0; width: 250px; height: 100vh; z-index: 1000;">
+        <h4 class="mb-4" style="color: black; ">DULCIES BOLOS</h4>
+        <p class="linha" style="border-bottom: 1px solid black;"></p>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Funcionarios" asp-action="Index">Funcionários</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Cargos" asp-action="Index">Cargos</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Clientes" asp-action="Index">Clientes</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Bolos" asp-action="Index">Bolos</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Acrescimos" asp-action="Index">Acrescimos</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Pagamentos" asp-action="Index">Pagamentos</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Vendas" asp-action="Index">Vendas</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="GaleriaBolos" asp-action="Index">Galeria</a></li>
+        </ul>
+    </nav>
+
+
+    <div style="margin-left: 250px; min-height: 100vh; display: flex; flex-direction: column;">
+    
+    <div class="container flex-grow-1" style="padding-top: 30px;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="py-3 border-top" style="background-color: #f8f9fa; position: fixed; bottom: 0; left: 250px; right: 0; z-index: 999;">
+    <div class="container text-center">
+        <span class="text-dark small">&copy; @DateTime.Now.Year - DULCIES BOLOS</span>
+        <br />
+    </div>
+</footer>
+
+</div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
