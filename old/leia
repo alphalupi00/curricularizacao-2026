@@ -1,5 +1,0 @@
-em Domain (`src/DulciesBolos.Domain/Entities`),ficam salvas as estruturas e campos das tabelas como `Bolo.cs`, `Cliente.cs`, `Funcionario.cs`, `Acrescimo.cs` e `Venda.cs`;
-
-a parte de Infrastructure (`src/DulciesBolos.Infrastructure/Data`) é responsável pela comunicação com o banco de dados através do `ApplicationDbContext.cs` e pelo histórico das tabelas na pasta `Migrations`;
-
-a Api (`src/DulciesBolos.Api`), é onde ficam as regras de entrada em `Controllers`, as configurações de inicialização no `Program.cs`, e a linha de conexão com o banco de dados no arquivo `appsettings.json`.

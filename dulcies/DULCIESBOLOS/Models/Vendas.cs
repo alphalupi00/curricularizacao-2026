@@ -1,8 +1,9 @@
+using System;
 using System.ComponentModel.DataAnnotations; 
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DULCIESBOLOS.Models{
-
+namespace DULCIESBOLOS.Models
+{
     [Table("Venda")]  
     public class Venda
     {
@@ -11,26 +12,12 @@ namespace DULCIESBOLOS.Models{
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        
-        [Display(Name = "Cliente: ")] 
-        [Required(ErrorMessage = "O campo cliente é obrigatório")] 
-        public int? clienteId { get; set; } 
+        [Display(Name = "Usuário: ")] 
+        public string UsuarioId { get; set; } 
 
         [Display(Name = "Cliente: ")]
-        [ForeignKey("clienteId")]
-        public virtual Cliente? Cliente { get; set; } 
-
-
-        
-        [Display(Name = "Funcionario: ")] 
-        [Required(ErrorMessage = "O campo funcionário é obrigatório")] 
-        public int? funcionarioId { get; set; } 
-
-        [Display(Name = "Funcionario: ")]
-        [ForeignKey("funcionarioId")]
-        public virtual Funcionario? Funcionario { get; set; }
-
-
+        [ForeignKey("UsuarioId")]
+        public virtual Usuario Usuario { get; set; } 
 
         [Display(Name = "Bolo: ")] 
         [Required(ErrorMessage = "Informar o bolo é obrigatório")] 
@@ -38,20 +25,22 @@ namespace DULCIESBOLOS.Models{
 
         [Display(Name = "Bolo: ")]
         [ForeignKey("boloId")]
-        public virtual Bolo? Bolo { get; set; }
-
-
+        public virtual Bolo Bolo { get; set; }
 
         [Display(Name = "Quantidade: ")]
         [Required(ErrorMessage = "O campo quantidade é obrigatório")]
-        public string Quantidade { get; set; } = string.Empty;
+        [Range(1, 100, ErrorMessage = "A quantidade deve ser de no mínimo 1 unidade")]
+        public int Quantidade { get; set; } = 1;
 
+        [Display(Name = "Total (R$): ")]
+        public decimal Valor { get; set; } = 0;
 
-       [Display(Name = "Total: ")]
-       [Required(ErrorMessage = "O campo total é obrigatório")]
-       public float Valor { get; set; } = 0;
+        [Display(Name = "Data do Pedido: ")]
+        public DateTime DataVenda { get; set; } = DateTime.Now;
 
-
+        [Display(Name = "Status: ")]
+        [StringLength(30)]
+        public string Status { get; set; } = "Pendente";
 
         [Display(Name = "Forma de pagamento: ")] 
         [Required(ErrorMessage = "O campo forma de pagamento é obrigatório")] 
@@ -59,6 +48,6 @@ namespace DULCIESBOLOS.Models{
 
         [Display(Name = "Forma de pagamento: ")]
         [ForeignKey("formaPagamentoId")]
-        public virtual Pagamento? Pagamento { get; set; }
+        public virtual Pagamento Pagamento { get; set; }
     }
-} 
+}

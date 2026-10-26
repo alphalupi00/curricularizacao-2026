@@ -22,8 +22,11 @@ namespace DULCIESBOLOS.Controllers
         // GET: Vendas
         public async Task<IActionResult> Index()
         {
-            var appDBContext = _context.Venda.Include(v => v.Bolo).Include(v => v.Cliente).Include(v => v.Funcionario).Include(v => v.Pagamento);
-            return View(await appDBContext.ToListAsync());
+            var vendas = _context.Venda
+                .Include(v => v.Bolo)
+                .Include(v => v.Usuario)
+                .Include(v => v.Pagamento);
+            return View(await vendas.ToListAsync());
         }
 
         // GET: Vendas/Details/5
@@ -36,8 +39,7 @@ namespace DULCIESBOLOS.Controllers
 
             var venda = await _context.Venda
                 .Include(v => v.Bolo)
-                .Include(v => v.Cliente)
-                .Include(v => v.Funcionario)
+                .Include(v => v.Usuario)
                 .Include(v => v.Pagamento)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (venda == null)
@@ -52,28 +54,35 @@ namespace DULCIESBOLOS.Controllers
         public IActionResult Create()
         {
             ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao");
-            ViewData["clienteId"] = new SelectList(_context.Cliente, "Id", "Endereco");
-            ViewData["funcionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome");
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto");
             ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao");
             return View();
         }
 
         // POST: Vendas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,clienteId,funcionarioId,boloId,Quantidade,Valor,formaPagamentoId")] Venda venda)
+        public async Task<IActionResult> Create([Bind("Id,UsuarioId,boloId,Quantidade,formaPagamentoId")] Venda venda)
         {
+            // Segurança: O valor total é calculado no servidor buscando o preço do bolo no banco
+            var bolo = await _context.Bolo.FindAsync(venda.boloId);
+            if (bolo != null)
+            {
+                venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+            }
+
+            venda.DataVenda = DateTime.Now;
+            venda.Status = "Pendente";
+
             if (ModelState.IsValid)
             {
                 _context.Add(venda);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["clienteId"] = new SelectList(_context.Cliente, "Id", "Endereco", venda.clienteId);
-            ViewData["funcionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", venda.funcionarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
             ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
             return View(venda);
         }
@@ -92,22 +101,25 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
             ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["clienteId"] = new SelectList(_context.Cliente, "Id", "Endereco", venda.clienteId);
-            ViewData["funcionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", venda.funcionarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
             ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
             return View(venda);
         }
 
         // POST: Vendas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,clienteId,funcionarioId,boloId,Quantidade,Valor,formaPagamentoId")] Venda venda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UsuarioId,boloId,Quantidade,formaPagamentoId,Status")] Venda venda)
         {
             if (id != venda.Id)
             {
                 return NotFound();
+            }
+
+            var bolo = await _context.Bolo.FindAsync(venda.boloId);
+            if (bolo != null)
+            {
+                venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
             }
 
             if (ModelState.IsValid)
@@ -131,8 +143,7 @@ namespace DULCIESBOLOS.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["clienteId"] = new SelectList(_context.Cliente, "Id", "Endereco", venda.clienteId);
-            ViewData["funcionarioId"] = new SelectList(_context.Funcionarios, "Id", "Nome", venda.funcionarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
             ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
             return View(venda);
         }
@@ -147,8 +158,7 @@ namespace DULCIESBOLOS.Controllers
 
             var venda = await _context.Venda
                 .Include(v => v.Bolo)
-                .Include(v => v.Cliente)
-                .Include(v => v.Funcionario)
+                .Include(v => v.Usuario)
                 .Include(v => v.Pagamento)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (venda == null)

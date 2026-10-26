@@ -50,11 +50,9 @@ namespace DULCIESBOLOS.Controllers
         }
 
         // POST: Funcionarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,cargoId,horarioServico")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,horarioServico")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -82,11 +80,9 @@ namespace DULCIESBOLOS.Controllers
         }
 
         // POST: Funcionarios/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,cargoId,horarioServico")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,horarioServico")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
