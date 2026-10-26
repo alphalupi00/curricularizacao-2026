@@ -20,145 +20,145 @@ build_property.TargetFrameworkVersion = v10.0
 build_property.EntryPointFilePath = 
 build_property.RootNamespace = DULCIESBOLOS
 build_property.RootNamespace = DULCIESBOLOS
-build_property.ProjectDir = C:\Users\LABORINFO\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\
+build_property.ProjectDir = C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\LABORINFO\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS
+build_property.MSBuildProjectDirectory = C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Create.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNyZXNjaW1vc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Delete.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNyZXNjaW1vc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Details.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNyZXNjaW1vc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Edit.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNyZXNjaW1vc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Acrescimos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNyZXNjaW1vc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Create.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9sb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Delete.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9sb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Details.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9sb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Edit.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9sb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Bolos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9sb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Create.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Delete.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Details.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Edit.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Funcionarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/GaleriaBolos/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/GaleriaBolos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FsZXJpYUJvbG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Home/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Home/Privacy.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Create.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Delete.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Details.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Edit.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Pagamentos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnYW1lbnRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/Error.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Create.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Delete.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Details.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Edit.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Index.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Vendas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/_ViewImports.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/_ViewStart.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LABORINFO/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/_Layout.cshtml]
+[C:/Users/FEMA/Downloads/curricularizacao-2026/dulcies/DULCIESBOLOS/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8kcollmxei

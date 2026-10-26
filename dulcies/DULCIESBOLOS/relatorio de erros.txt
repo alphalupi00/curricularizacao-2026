@@ -1,0 +1,11 @@
+🔴 Problemas Críticos
+Nenhum controller tem [Authorize] — toda a configuração de Identity/Login é inútil, qualquer visitante anônimo acessa tudo
+Não existe ContaController — o LoginPath = "/Conta/Login" aponta para uma rota que não existe (daria 404)
+float para valores monetários em Bolo e Acrescimo — causa perda de precisão (ex: R$ 19.99 vira 19.989999...). Deveria ser decimal
+🟠 Problemas Médios
+Versões de pacotes NuGet incompatíveis — Identity 10.0.14 vs EF Core 10.0.13
+Vulnerabilidade alta no pacote System.Security.Cryptography.Pkcs
+🟡 Problemas Menores
+Nomenclatura inconsistente (camelCase vs PascalCase)
+Connection strings duplicadas que não são usadas
+Faltam scripts de validação e asp-validation-for em views
