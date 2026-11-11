@@ -1,39 +1,40 @@
 @model DULCIESBOLOS.Models.Bolo
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir Bolo";
 }
 
-<h1>Delete</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white py-3">
+                    <h4 class="card-title mb-0">⚠️ Confirmar Exclusão</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Atenção:</strong> Tem certeza de que deseja excluir este bolo do cardápio?
+                    </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Bolo</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tamanho)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tamanho)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Valor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Sabor do Bolo:</dt>
+                        <dd class="col-sm-8 fw-semibold fs-5">@Model.Descricao</dd>
+
+                        <dt class="col-sm-4 text-muted">Tamanho:</dt>
+                        <dd class="col-sm-8">@Model.Tamanho</dd>
+
+                        <dt class="col-sm-4 text-muted">Valor:</dt>
+                        <dd class="col-sm-8 fw-bold text-success">R$ @Model.Valor.ToString("F2")</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light border-top p-3">
+                    <form asp-action="Delete" class="d-flex gap-2">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Confirmar Exclusão" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar e Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

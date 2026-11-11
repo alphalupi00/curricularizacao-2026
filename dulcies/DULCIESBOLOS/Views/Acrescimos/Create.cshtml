@@ -1,40 +1,37 @@
 @model DULCIESBOLOS.Models.Acrescimo
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar Acréscimo";
 }
 
-<h1>Create</h1>
+<h1>Novo Acréscimo</h1>
 
-<h4>Acrescimo</h4>
+<h4>Acréscimo</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Descricao" class="control-label fw-semibold">Descrição</label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Quantidade" class="control-label"></label>
+            <div class="form-group mb-3">
+                <label asp-for="Quantidade" class="control-label fw-semibold">Quantidade</label>
                 <input asp-for="Quantidade" class="form-control" />
                 <span asp-validation-for="Quantidade" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
+            <div class="form-group mb-4">
+                <label asp-for="Valor" class="control-label fw-semibold">Valor</label>
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="d-flex gap-2">
+                <input type="submit" value="Salvar Acréscimo" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

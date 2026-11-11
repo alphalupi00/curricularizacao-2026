@@ -4,68 +4,90 @@
     ViewData["Title"] = "Pedidos e Vendas";
 }
 
-<h1>Pedidos e Vendas</h1>
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div>
+        <h2 class="mb-1" style="color: #333;">📦 Pedidos e Vendas</h2>
+        <p class="text-muted mb-0">Controle de vendas de bolos, status de pedidos e formas de pagamento</p>
+    </div>
+    <div>
+        <a asp-action="Create" class="btn btn-success">
+            + Novo Pedido
+        </a>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Novo Pedido</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Cliente
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bolo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataVenda)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pagamento)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @(item.Usuario?.NomeCompleto ?? "Anônimo")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bolo.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>
-                R$ @item.Valor.ToString("F2")
-            </td>
-            <td>
-                @item.DataVenda.ToString("dd/MM/yyyy HH:mm")
-            </td>
-            <td>
-                <span class="badge bg-info text-dark">@item.Status</span>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pagamento.descricao)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-3">Cliente</th>
+                        <th>Bolo / Tamanho</th>
+                        <th class="text-center">Qtd</th>
+                        <th class="text-center">Total (R$)</th>
+                        <th class="text-center">Data do Pedido</th>
+                        <th class="text-center">Status</th>
+                        <th>Forma de Pagamento</th>
+                        <th class="text-end pe-3">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center py-4 text-muted">
+                                Nenhuma venda registrada ainda. Clique em <strong>+ Novo Pedido</strong> para cadastrar.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            var statusBadge = item.Status switch
+                            {
+                                "Pendente" => "bg-warning text-dark",
+                                "Em Produção" => "bg-info text-dark",
+                                "Pronto para Entrega" => "bg-primary text-white",
+                                "Entregue" => "bg-success text-white",
+                                "Cancelado" => "bg-danger text-white",
+                                _ => "bg-secondary text-white"
+                            };
+
+                            <tr>
+                                <td class="ps-3 fw-semibold">
+                                    @(item.Usuario?.NomeCompleto ?? "Cliente Balcão")
+                                </td>
+                                <td>
+                                    <div>@item.Bolo?.Descricao</div>
+                                    <small class="text-muted">Tamanho: <span class="badge bg-light text-dark border">@item.Bolo?.Tamanho</span></small>
+                                </td>
+                                <td class="text-center fw-bold">
+                                    @item.Quantidade un
+                                </td>
+                                <td class="text-center fw-bold text-success">
+                                    R$ @item.Valor.ToString("F2")
+                                </td>
+                                <td class="text-center small text-muted">
+                                    @item.DataVenda.ToString("dd/MM/yyyy HH:mm")
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge @statusBadge px-2 py-1">@item.Status</span>
+                                </td>
+                                <td>
+                                    @(item.Pagamento?.descricao ?? "-")
+                                </td>
+                                <td class="text-end pe-3">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1">Editar</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1">Detalhes</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

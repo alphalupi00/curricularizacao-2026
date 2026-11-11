@@ -1,30 +1,27 @@
 @model DULCIESBOLOS.Models.Pagamento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar Forma de Pagamento";
 }
 
-<h1>Create</h1>
+<h1>Nova Forma de Pagamento</h1>
 
 <h4>Pagamento</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="descricao" class="control-label"></label>
-                <input asp-for="descricao" class="form-control" />
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <div class="form-group mb-4">
+                <label asp-for="descricao" class="control-label fw-semibold">Descrição</label>
+                <input asp-for="descricao" class="form-control" placeholder="Ex: Cartão de Crédito, PIX, Dinheiro..." />
                 <span asp-validation-for="descricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="d-flex gap-2">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

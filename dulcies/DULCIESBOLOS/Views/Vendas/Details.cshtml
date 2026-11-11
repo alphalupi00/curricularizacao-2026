@@ -1,38 +1,50 @@
 @model DULCIESBOLOS.Models.Venda
 
 @{
-    ViewData["Title"] = "Detalhes da Venda";
+    ViewData["Title"] = "Detalhes do Pedido";
 }
 
-<h1>Detalhes</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h3 class="card-title mb-0" style="color: #333;">🔍 Detalhes do Pedido #@Model.Id</h3>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Cliente:</dt>
+                        <dd class="col-sm-8 fw-semibold fs-5">@(Model.Usuario?.NomeCompleto ?? "Cliente Balcão")</dd>
 
-<div>
-    <h4>Venda</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-3">Cliente</dt>
-        <dd class="col-sm-9">@(Model.Usuario?.NomeCompleto ?? "Anônimo")</dd>
+                        <dt class="col-sm-4 text-muted">Bolo Solicitado:</dt>
+                        <dd class="col-sm-8">
+                            <span class="fw-semibold">@Model.Bolo?.Descricao</span>
+                            <span class="badge bg-light text-dark border ms-1">Tamanho @Model.Bolo?.Tamanho</span>
+                        </dd>
 
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Bolo)</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Bolo.Descricao)</dd>
+                        <dt class="col-sm-4 text-muted">Quantidade:</dt>
+                        <dd class="col-sm-8 fw-bold">@Model.Quantidade unidade(s)</dd>
 
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Quantidade)</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Quantidade)</dd>
+                        <dt class="col-sm-4 text-muted">Valor Total:</dt>
+                        <dd class="col-sm-8 fw-bold text-success fs-5">R$ @Model.Valor.ToString("F2")</dd>
 
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Valor)</dt>
-        <dd class="col-sm-9">R$ @Model.Valor.ToString("F2")</dd>
+                        <dt class="col-sm-4 text-muted">Data do Pedido:</dt>
+                        <dd class="col-sm-8 text-muted">@Model.DataVenda.ToString("dd/MM/yyyy HH:mm")</dd>
 
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.DataVenda)</dt>
-        <dd class="col-sm-9">@Model.DataVenda.ToString("dd/MM/yyyy HH:mm")</dd>
+                        <dt class="col-sm-4 text-muted">Status:</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-info text-dark">@Model.Status</span>
+                        </dd>
 
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Status)</dt>
-        <dd class="col-sm-9"><span class="badge bg-info text-dark">@Model.Status</span></dd>
-
-        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Pagamento)</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Pagamento.descricao)</dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Voltar para a Lista</a>
+                        <dt class="col-sm-4 text-muted">Forma de Pagamento:</dt>
+                        <dd class="col-sm-8">@(Model.Pagamento?.descricao ?? "-")</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light border-top p-3 d-flex gap-2">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

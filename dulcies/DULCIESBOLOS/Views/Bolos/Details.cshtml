@@ -1,36 +1,51 @@
 @model DULCIESBOLOS.Models.Bolo
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes do Bolo";
 }
 
-<h1>Details</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h3 class="card-title mb-0" style="color: #333;">🔍 Detalhes do Bolo</h3>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Sabor do Bolo:</dt>
+                        <dd class="col-sm-8 fw-semibold fs-5">@Model.Descricao</dd>
 
-<div>
-    <h4>Bolo</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tamanho)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tamanho)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Valor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                        <dt class="col-sm-4 text-muted">Tamanho:</dt>
+                        <dd class="col-sm-8">
+                            @{
+                                var tamanhoBadge = Model.Tamanho.ToUpper() switch
+                                {
+                                    "P" => "bg-info text-dark",
+                                    "M" => "bg-primary text-white",
+                                    "G" => "bg-success text-white",
+                                    _ => "bg-secondary text-white"
+                                };
+                                var tamanhoDesc = Model.Tamanho.ToUpper() switch
+                                {
+                                    "P" => "Pequeno (P)",
+                                    "M" => "Médio (M)",
+                                    "G" => "Grande (G)",
+                                    _ => Model.Tamanho
+                                };
+                            }
+                            <span class="badge @tamanhoBadge px-2 py-1">@tamanhoDesc</span>
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted mt-2">Valor Unitário:</dt>
+                        <dd class="col-sm-8 fw-bold text-success fs-5 mt-2">R$ @Model.Valor.ToString("F2")</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light border-top p-3 d-flex gap-2">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

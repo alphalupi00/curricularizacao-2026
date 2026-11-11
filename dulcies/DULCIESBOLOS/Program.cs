@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using DULCIESBOLOS.Data;
 using DULCIESBOLOS.Models;
+using DULCIESBOLOS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,9 @@ builder.Services.AddControllersWithViews();
 // Registra o AppDBContext com SQL Server
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Registra o Serviço de Agrupamento e Pivot
+builder.Services.AddScoped<IPivotService, PivotService>();
 
 // Configuração dos Serviços do ASP.NET Core Identity
 builder.Services.AddIdentity<Usuario, IdentityRole>(options =>

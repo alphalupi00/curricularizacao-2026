@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations; 
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DULCIESBOLOS.Models{
-
+namespace DULCIESBOLOS.Models
+{
     [Table("Bolo")]  
     public class Bolo
     {
@@ -11,19 +11,20 @@ namespace DULCIESBOLOS.Models{
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Descrição: ")]
-        [Required(ErrorMessage = "O campo descrição é obrigatório")]
-        [StringLength(100, ErrorMessage = "O campo descrição deve ter no máximo 100 caracteres")]
+        [Display(Name = "Sabor: ")]
+        [Required(ErrorMessage = "O campo Sabor é obrigatório")]
+        [StringLength(100, ErrorMessage = "O campo Sabor deve ter no máximo 100 caracteres")]
         public string Descricao { get; set; } = string.Empty;
 
-        [Display(Name = "Tamanho: ")]
-        [Required(ErrorMessage = "O campo tamanho é obrigatório")]
+        [Display(Name = "Tamanho (P, M ou G): ")]
+        [Required(ErrorMessage = "O campo tamanho é obrigatório (informe P, M ou G)")]
+        [RegularExpression("^(P|M|G|p|m|g)$", ErrorMessage = "O tamanho deve ser P, M ou G")]
         [StringLength(5, ErrorMessage = "O campo tamanho deve ter no máximo 5 caracteres")]
-        public string Tamanho { get; set; } = string.Empty;
+        public string Tamanho { get; set; } = "M";
 
-
-       [Display(Name = "Valor: ")]
-       [Required(ErrorMessage = "O campo valor é obrigatório")]
-       public float Valor { get; set; } = 0;
+        [Display(Name = "Valor (R$): ")]
+        [Required(ErrorMessage = "O campo valor é obrigatório")]
+        [Range(0.01, 9999.99, ErrorMessage = "O valor deve ser maior que zero")]
+        public float Valor { get; set; } = 0;
     }
-} 
+}

@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,9 @@ namespace DULCIESBOLOS.Controllers
             var vendas = _context.Venda
                 .Include(v => v.Bolo)
                 .Include(v => v.Usuario)
-                .Include(v => v.Pagamento);
+                .Include(v => v.Pagamento)
+                .OrderByDescending(v => v.DataVenda);
+
             return View(await vendas.ToListAsync());
         }
 
@@ -42,6 +45,7 @@ namespace DULCIESBOLOS.Controllers
                 .Include(v => v.Usuario)
                 .Include(v => v.Pagamento)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (venda == null)
             {
                 return NotFound();
@@ -51,11 +55,9 @@ namespace DULCIESBOLOS.Controllers
         }
 
         // GET: Vendas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao");
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto");
-            ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao");
+            await CarregarListasDropdownAsync();
             return View();
         }
 
@@ -64,15 +66,23 @@ namespace DULCIESBOLOS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UsuarioId,boloId,Quantidade,formaPagamentoId")] Venda venda)
         {
-            // Segurança: O valor total é calculado no servidor buscando o preço do bolo no banco
-            var bolo = await _context.Bolo.FindAsync(venda.boloId);
-            if (bolo != null)
+            // Busca o bolo selecionado para calcular o valor total com base no preço e quantidade
+            if (venda.boloId.HasValue)
             {
-                venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+                var bolo = await _context.Bolo.FindAsync(venda.boloId.Value);
+                if (bolo != null)
+                {
+                    venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+                }
             }
 
             venda.DataVenda = DateTime.Now;
             venda.Status = "Pendente";
+
+            // Remove validações automáticas de propriedades de navegação para não bloquear o cadastro
+            ModelState.Remove("Usuario");
+            ModelState.Remove("Bolo");
+            ModelState.Remove("Pagamento");
 
             if (ModelState.IsValid)
             {
@@ -81,9 +91,7 @@ namespace DULCIESBOLOS.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
-            ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
+            await CarregarListasDropdownAsync(venda.boloId, venda.UsuarioId, venda.formaPagamentoId);
             return View(venda);
         }
 
@@ -100,27 +108,33 @@ namespace DULCIESBOLOS.Controllers
             {
                 return NotFound();
             }
-            ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
-            ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
+
+            await CarregarListasDropdownAsync(venda.boloId, venda.UsuarioId, venda.formaPagamentoId);
             return View(venda);
         }
 
         // POST: Vendas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,UsuarioId,boloId,Quantidade,formaPagamentoId,Status")] Venda venda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,UsuarioId,boloId,Quantidade,formaPagamentoId,Status,DataVenda")] Venda venda)
         {
             if (id != venda.Id)
             {
                 return NotFound();
             }
 
-            var bolo = await _context.Bolo.FindAsync(venda.boloId);
-            if (bolo != null)
+            if (venda.boloId.HasValue)
             {
-                venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+                var bolo = await _context.Bolo.FindAsync(venda.boloId.Value);
+                if (bolo != null)
+                {
+                    venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+                }
             }
+
+            ModelState.Remove("Usuario");
+            ModelState.Remove("Bolo");
+            ModelState.Remove("Pagamento");
 
             if (ModelState.IsValid)
             {
@@ -142,9 +156,8 @@ namespace DULCIESBOLOS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["boloId"] = new SelectList(_context.Bolo, "Id", "Descricao", venda.boloId);
-            ViewData["UsuarioId"] = new SelectList(_context.Users, "Id", "NomeCompleto", venda.UsuarioId);
-            ViewData["formaPagamentoId"] = new SelectList(_context.Pagamento, "Id", "descricao", venda.formaPagamentoId);
+
+            await CarregarListasDropdownAsync(venda.boloId, venda.UsuarioId, venda.formaPagamentoId);
             return View(venda);
         }
 
@@ -161,6 +174,7 @@ namespace DULCIESBOLOS.Controllers
                 .Include(v => v.Usuario)
                 .Include(v => v.Pagamento)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (venda == null)
             {
                 return NotFound();
@@ -187,6 +201,38 @@ namespace DULCIESBOLOS.Controllers
         private bool VendaExists(int id)
         {
             return _context.Venda.Any(e => e.Id == id);
+        }
+
+        /// <summary>
+        /// Carrega os menus suspensos (dropdowns) com informações completas e amigáveis:
+        /// exibe sabor, tamanho (P, M ou G) e o valor no menu de bolos.
+        /// </summary>
+        private async Task CarregarListasDropdownAsync(int? boloId = null, string? usuarioId = null, int? formaPagamentoId = null)
+        {
+            var bolos = await _context.Bolo
+                .OrderBy(b => b.Descricao)
+                .ThenBy(b => b.Tamanho)
+                .ToListAsync();
+
+            var listaBolos = bolos.Select(b => new
+            {
+                Id = b.Id,
+                TextoExibicao = $"{b.Descricao} - Tamanho {b.Tamanho.ToUpper()} (R$ {b.Valor:N2})"
+            }).ToList();
+
+            ViewData["boloId"] = new SelectList(listaBolos, "Id", "TextoExibicao", boloId);
+
+            var usuarios = await _context.Users
+                .OrderBy(u => u.NomeCompleto)
+                .ToListAsync();
+
+            ViewData["UsuarioId"] = new SelectList(usuarios, "Id", "NomeCompleto", usuarioId);
+
+            var pagamentos = await _context.Pagamento
+                .OrderBy(p => p.descricao)
+                .ToListAsync();
+
+            ViewData["formaPagamentoId"] = new SelectList(pagamentos, "Id", "descricao", formaPagamentoId);
         }
     }
 }

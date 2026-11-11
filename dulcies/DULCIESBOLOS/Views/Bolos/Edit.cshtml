@@ -1,41 +1,59 @@
 @model DULCIESBOLOS.Models.Bolo
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Bolo";
 }
 
-<h1>Edit</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h3 class="card-title mb-0" style="color: #333;">✏️ Editar Bolo</h3>
+                    <small class="text-muted">Atualize o sabor, tamanho ou preço deste bolo</small>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="Id" />
 
-<h4>Bolo</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
+                        <div class="form-group mb-3">
+                            <label asp-for="Descricao" class="form-label fw-semibold">Sabor do Bolo</label>
+                            <input asp-for="Descricao" class="form-control" />
+                            <span asp-validation-for="Descricao" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Tamanho" class="form-label fw-semibold">Tamanho (P, M ou G)</label>
+                            <select asp-for="Tamanho" class="form-select">
+                                <option value="P">P - Pequeno (aprox. 1 kg / 10 a 12 fatias)</option>
+                                <option value="M">M - Médio (aprox. 1,5 kg / 15 a 18 fatias)</option>
+                                <option value="G">G - Grande (aprox. 2,5 kg / 25 a 30 fatias)</option>
+                            </select>
+                            <small class="form-text text-muted">Defina o tamanho do bolo entre <strong>P</strong>, <strong>M</strong> ou <strong>G</strong>.</small>
+                            <span asp-validation-for="Tamanho" class="text-danger small d-block"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Valor" class="form-label fw-semibold">Valor Unitário (R$)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">R$</span>
+                                <input asp-for="Valor" class="form-control" type="number" step="0.50" min="0.01" />
+                            </div>
+                            <span asp-validation-for="Valor" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <input type="submit" value="Salvar Alterações" class="btn btn-primary px-4" />
+                            <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Tamanho" class="control-label"></label>
-                <input asp-for="Tamanho" class="form-control" />
-                <span asp-validation-for="Tamanho" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

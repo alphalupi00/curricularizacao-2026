@@ -1,6 +1,8 @@
+#nullable enable
 using System;
 using System.ComponentModel.DataAnnotations; 
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace DULCIESBOLOS.Models
 {
@@ -12,20 +14,21 @@ namespace DULCIESBOLOS.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Usuário: ")] 
-        public string UsuarioId { get; set; } 
-
         [Display(Name = "Cliente: ")]
+        [Required(ErrorMessage = "O campo Cliente é obrigatório")]
+        public string UsuarioId { get; set; } = string.Empty;
+
         [ForeignKey("UsuarioId")]
-        public virtual Usuario Usuario { get; set; } 
+        [ValidateNever]
+        public virtual Usuario? Usuario { get; set; } 
 
         [Display(Name = "Bolo: ")] 
-        [Required(ErrorMessage = "Informar o bolo é obrigatório")] 
-        public int? boloId { get; set; } 
+        [Required(ErrorMessage = "O campo Bolo é obrigatório")] 
+        public int? boloId { get; set; }
 
-        [Display(Name = "Bolo: ")]
         [ForeignKey("boloId")]
-        public virtual Bolo Bolo { get; set; }
+        [ValidateNever]
+        public virtual Bolo? Bolo { get; set; }
 
         [Display(Name = "Quantidade: ")]
         [Required(ErrorMessage = "O campo quantidade é obrigatório")]
@@ -33,6 +36,7 @@ namespace DULCIESBOLOS.Models
         public int Quantidade { get; set; } = 1;
 
         [Display(Name = "Total (R$): ")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; } = 0;
 
         [Display(Name = "Data do Pedido: ")]
@@ -46,8 +50,8 @@ namespace DULCIESBOLOS.Models
         [Required(ErrorMessage = "O campo forma de pagamento é obrigatório")] 
         public int? formaPagamentoId { get; set; } 
 
-        [Display(Name = "Forma de pagamento: ")]
         [ForeignKey("formaPagamentoId")]
-        public virtual Pagamento Pagamento { get; set; }
+        [ValidateNever]
+        public virtual Pagamento? Pagamento { get; set; }
     }
 }

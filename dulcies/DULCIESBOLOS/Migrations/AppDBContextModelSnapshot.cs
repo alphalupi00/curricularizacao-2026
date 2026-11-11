@@ -209,10 +209,12 @@ namespace DULCIESBOLOS.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
+                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("UsuarioId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Valor")
@@ -372,7 +374,9 @@ namespace DULCIESBOLOS.Migrations
                 {
                     b.HasOne("DULCIESBOLOS.Models.Usuario", "Usuario")
                         .WithMany()
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DULCIESBOLOS.Models.Bolo", "Bolo")
                         .WithMany()

@@ -9,3 +9,13 @@ Vulnerabilidade alta no pacote System.Security.Cryptography.Pkcs
 Nomenclatura inconsistente (camelCase vs PascalCase)
 Connection strings duplicadas que não são usadas
 Faltam scripts de validação e asp-validation-for em views
+
+
+
+
+
+
+✅ Problemas Resolvidos
+- Cadastro de Vendas corrigido (validação de propriedades de navegação e dropdown rico com Sabor + Tamanho P/M/G)
+- Botoes e views traduzidos para Portugues (Editar, Detalhes, Excluir, Voltar, Salvar)
+- Tamanho do bolo restrito e padronizado em P, M ou G no cadastro e nas vendas

@@ -1,41 +1,67 @@
 @model DULCIESBOLOS.Models.Venda
 
 @{
-    ViewData["Title"] = "Criar Pedido";
+    ViewData["Title"] = "Novo Pedido de Venda";
 }
 
-<h1>Novo Pedido</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h3 class="card-title mb-0" style="color: #333;">🛒 Novo Pedido de Venda</h3>
+                    <small class="text-muted">Selecione o cliente, o bolo desejado e a quantidade para calcular o total</small>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h4>Venda</h4>
-<hr />
-<div class="row">
-    <div class="col-md-5">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group mb-3">
-                <label asp-for="UsuarioId" class="control-label">Cliente</label>
-                <select asp-for="UsuarioId" class="form-control" asp-items="ViewBag.UsuarioId"></select>
+                        <!-- Cliente -->
+                        <div class="form-group mb-3">
+                            <label asp-for="UsuarioId" class="form-label fw-semibold">Cliente</label>
+                            <select asp-for="UsuarioId" class="form-select" asp-items="ViewBag.UsuarioId">
+                                <option value="">-- Selecione o Cliente --</option>
+                            </select>
+                            <span asp-validation-for="UsuarioId" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Bolo (Sabor e Tamanho P, M ou G no menuzinho que desce) -->
+                        <div class="form-group mb-3">
+                            <label asp-for="boloId" class="form-label fw-semibold">Bolo (Sabor e Tamanho P, M ou G)</label>
+                            <select asp-for="boloId" class="form-select" asp-items="ViewBag.boloId">
+                                <option value="">-- Selecione o Bolo e Tamanho --</option>
+                            </select>
+                            <small class="form-text text-muted">O preço total é calculado automaticamente a partir do bolo selecionado.</small>
+                            <span asp-validation-for="boloId" class="text-danger small d-block"></span>
+                        </div>
+
+                        <!-- Quantidade -->
+                        <div class="form-group mb-3">
+                            <label asp-for="Quantidade" class="form-label fw-semibold">Quantidade</label>
+                            <input asp-for="Quantidade" class="form-control" type="number" min="1" max="100" value="1" />
+                            <span asp-validation-for="Quantidade" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Forma de Pagamento -->
+                        <div class="form-group mb-4">
+                            <label asp-for="formaPagamentoId" class="form-label fw-semibold">Forma de Pagamento</label>
+                            <select asp-for="formaPagamentoId" class="form-select" asp-items="ViewBag.formaPagamentoId">
+                                <option value="">-- Selecione a Forma de Pagamento --</option>
+                            </select>
+                            <span asp-validation-for="formaPagamentoId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <input type="submit" value="Salvar Pedido" class="btn btn-primary px-4" />
+                            <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="boloId" class="control-label"></label>
-                <select asp-for="boloId" class="form-control" asp-items="ViewBag.boloId"></select>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="Quantidade" class="control-label"></label>
-                <input asp-for="Quantidade" class="form-control" type="number" min="1" />
-                <span asp-validation-for="Quantidade" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="formaPagamentoId" class="control-label"></label>
-                <select asp-for="formaPagamentoId" class="form-control" asp-items="ViewBag.formaPagamentoId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar Pedido" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Index">Voltar para a Lista</a>
-</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
