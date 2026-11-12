@@ -1073,6 +1073,7 @@ C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\EFCore.Tools.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.Identity.Client.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\Microsoft.Identity.Client.Broker.dll
@@ -1384,4 +1385,3 @@ C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.pdb
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.genruntimeconfig.cache
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\ref\DULCIESBOLOS.dll
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\EFCore.Tools.dll

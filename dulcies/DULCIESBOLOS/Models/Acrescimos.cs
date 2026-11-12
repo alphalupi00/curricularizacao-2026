@@ -16,14 +16,15 @@ namespace DULCIESBOLOS.Models{
         [StringLength(100, ErrorMessage = "O campo descrição deve ter no máximo 100 caracteres")]
         public string Descricao { get; set; } = string.Empty;
 
-        [Display(Name = "Quantidade (em g): ")]
+        [Display(Name = "Quantidade (em gramas): ")]
         [Required(ErrorMessage = "O campo quantidade é obrigatório")]
         [StringLength(5, ErrorMessage = "O campo quantidade deve ter no máximo 5 caracteres")]
         public string Quantidade { get; set; } = string.Empty;
 
 
-       [Display(Name = "Valor: ")]
+       [Display(Name = "Valor (R$): ")]
+       [Column(TypeName = "decimal(18,2)")]
        [Required(ErrorMessage = "O campo valor é obrigatório")]
-       public float Valor { get; set; } = 0;
+       public decimal Valor { get; set; } = 0;
     }
 } 

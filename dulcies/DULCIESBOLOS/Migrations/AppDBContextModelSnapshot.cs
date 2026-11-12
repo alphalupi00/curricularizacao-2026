@@ -40,8 +40,8 @@ namespace DULCIESBOLOS.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<float>("Valor")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

@@ -4,34 +4,51 @@
     ViewData["Title"] = "Cadastrar Acréscimo";
 }
 
-<h1>Novo Acréscimo</h1>
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h3 class="card-title mb-0" style="color: #333;">✨ Novo Acréscimo</h3>
 
-<h4>Acréscimo</h4>
-<hr />
-<div class="row">
-    <div class="col-md-5">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-            <div class="form-group mb-3">
-                <label asp-for="Descricao" class="control-label fw-semibold">Descrição</label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="Descricao" class="form-label fw-semibold">Descrição do Acréscimo</label>
+                            <input asp-for="Descricao" class="form-control" placeholder="Ex: Morangos frescos, Nutella, Brigadeiro extra..." />
+                            <span asp-validation-for="Descricao" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Quantidade" class="form-label fw-semibold">Quantidade (em gramas ou porção)</label>
+                            <input asp-for="Quantidade" class="form-control" placeholder="Ex: 50g, 100g, 1 porção" />
+                            <small class="form-text text-muted">Informe o peso em gramas ou a porção padrão.</small>
+                            <span asp-validation-for="Quantidade" class="text-danger small d-block"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Valor" class="form-label fw-semibold">Valor (R$)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">R$</span>
+                                <input asp-for="Valor" class="form-control" type="number" step="0.01" min="0.01" placeholder="0,00" />
+                            </div>
+                            <span asp-validation-for="Valor" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <input type="submit" value="Salvar Acréscimo" class="btn btn-primary px-4" />
+                            <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="Quantidade" class="control-label fw-semibold">Quantidade</label>
-                <input asp-for="Quantidade" class="form-control" />
-                <span asp-validation-for="Quantidade" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-4">
-                <label asp-for="Valor" class="control-label fw-semibold">Valor</label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="d-flex gap-2">
-                <input type="submit" value="Salvar Acréscimo" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

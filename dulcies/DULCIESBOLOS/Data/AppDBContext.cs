@@ -10,10 +10,10 @@ namespace DULCIESBOLOS.Data{
         }
 
         public DbSet<Funcionario> Funcionarios { get; set; } 
-         public DbSet<DULCIESBOLOS.Models.Bolo> Bolo { get; set; }
-         public DbSet<DULCIESBOLOS.Models.Acrescimo> Acrescimo { get; set; }
-         public DbSet<DULCIESBOLOS.Models.Pagamento> Pagamento { get; set; }
-         public DbSet<DULCIESBOLOS.Models.Venda> Venda { get; set; }
+        public DbSet<DULCIESBOLOS.Models.Bolo> Bolo { get; set; }
+        public DbSet<DULCIESBOLOS.Models.Acrescimo> Acrescimo { get; set; }
+        public DbSet<DULCIESBOLOS.Models.Pagamento> Pagamento { get; set; }
+        public DbSet<DULCIESBOLOS.Models.Venda> Venda { get; set; }
        
        
     }

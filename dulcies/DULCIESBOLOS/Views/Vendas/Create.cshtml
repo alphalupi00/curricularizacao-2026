@@ -10,7 +10,6 @@
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white border-bottom py-3">
                     <h3 class="card-title mb-0" style="color: #333;">🛒 Novo Pedido de Venda</h3>
-                    <small class="text-muted">Selecione o cliente, o bolo desejado e a quantidade para calcular o total</small>
                 </div>
                 <div class="card-body p-4">
                     <form asp-action="Create">
@@ -20,7 +19,7 @@
                         <div class="form-group mb-3">
                             <label asp-for="UsuarioId" class="form-label fw-semibold">Cliente</label>
                             <select asp-for="UsuarioId" class="form-select" asp-items="ViewBag.UsuarioId">
-                                <option value="">-- Selecione o Cliente --</option>
+                                <option value="">-- Selecione o Cliente</option>
                             </select>
                             <span asp-validation-for="UsuarioId" class="text-danger small"></span>
                         </div>
@@ -29,7 +28,7 @@
                         <div class="form-group mb-3">
                             <label asp-for="boloId" class="form-label fw-semibold">Bolo (Sabor e Tamanho P, M ou G)</label>
                             <select asp-for="boloId" class="form-select" asp-items="ViewBag.boloId">
-                                <option value="">-- Selecione o Bolo e Tamanho --</option>
+                                <option value="">-- Selecione o Bolo e Tamanho</option>
                             </select>
                             <small class="form-text text-muted">O preço total é calculado automaticamente a partir do bolo selecionado.</small>
                             <span asp-validation-for="boloId" class="text-danger small d-block"></span>
@@ -38,7 +37,7 @@
                         <!-- Quantidade -->
                         <div class="form-group mb-3">
                             <label asp-for="Quantidade" class="form-label fw-semibold">Quantidade</label>
-                            <input asp-for="Quantidade" class="form-control" type="number" min="1" max="100" value="1" />
+                            <input asp-for="Quantidade" class="form-control" type="number" min="1" max="20" value="1" />
                             <span asp-validation-for="Quantidade" class="text-danger small"></span>
                         </div>
 
@@ -46,7 +45,7 @@
                         <div class="form-group mb-4">
                             <label asp-for="formaPagamentoId" class="form-label fw-semibold">Forma de Pagamento</label>
                             <select asp-for="formaPagamentoId" class="form-select" asp-items="ViewBag.formaPagamentoId">
-                                <option value="">-- Selecione a Forma de Pagamento --</option>
+                                <option value="">-- Selecione a Forma de Pagamento</option>
                             </select>
                             <span asp-validation-for="formaPagamentoId" class="text-danger small"></span>
                         </div>
