@@ -1385,3 +1385,4 @@ C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.pdb
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.genruntimeconfig.cache
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\ref\DULCIESBOLOS.dll
+C:\Users\LABORINFO\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\bin\Debug\net10.0\EFCore.Tools.dll

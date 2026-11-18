@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Entrar"; //modificações
+}
+
+<div class="row justify-content-center mt-5"> <!-- //modificações -->
+    <div class="col-md-4"> <!-- //modificações -->
+        <h2 class="text-center mb-4">Entrar no Sistema</h2> <!-- //modificações -->
+        <form asp-action="Login" method="post"> <!-- //modificações -->
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" /> <!-- //modificações -->
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div> <!-- //modificações -->
+
+            <div class="mb-3"> <!-- //modificações -->
+                <label for="email" class="form-label">E-mail</label> <!-- //modificações -->
+                <input type="email" name="email" id="email" class="form-control" required /> <!-- //modificações -->
+            </div> <!-- //modificações -->
+
+            <div class="mb-3"> <!-- //modificações -->
+                <label for="senha" class="form-label">Senha</label> <!-- //modificações -->
+                <input type="password" name="senha" id="senha" class="form-control" required /> <!-- //modificações -->
+            </div> <!-- //modificações -->
+
+            <div class="mb-3 form-check"> <!-- //modificações -->
+                <input type="checkbox" name="lembrarMe" id="lembrarMe" value="true" class="form-check-input" /> <!-- //modificações -->
+                <label for="lembrarMe" class="form-check-label">Lembrar-me</label> <!-- //modificações -->
+            </div> <!-- //modificações -->
+
+            <button type="submit" class="btn btn-primary w-100">Entrar</button> <!-- //modificações -->
+        </form> <!-- //modificações -->
+    </div> <!-- //modificações -->
+</div> <!-- //modificações -->
