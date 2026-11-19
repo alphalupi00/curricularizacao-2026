@@ -1,44 +1,21 @@
-// Importa o namespace de Autorização do ASP.NET Core — contém atributos como
-// [Authorize] e [AllowAnonymous], que controlam QUEM pode acessar cada action.
-using Microsoft.AspNetCore.Authorization;
 
-// Importa o ASP.NET Core Identity — fornece as classes SignInManager e UserManager,
-// que são os serviços centrais de segurança para login, logout e gerenciamento de usuários.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization; //modificações
 using Microsoft.AspNetCore.Identity;
-
-// Importa o framework MVC — fornece a classe base Controller, os atributos [HttpGet],
-// [HttpPost], [ValidateAntiForgeryToken] e os métodos View(), Redirect(), etc.
 using Microsoft.AspNetCore.Mvc;
-
-// Importa os Models do projeto — precisamos da classe Usuario (que herda de IdentityUser)
-// para que o SignInManager e UserManager saibam qual entidade de usuário utilizar.
 using DULCIESBOLOS.Models;
+using DULCIESBOLOS.Models.ViewModel;
 
 namespace DULCIESBOLOS.Controllers
 {
-    // ============================================================================
-    // ContaController — Controller responsável por toda a segurança de acesso:
-    // Login, Logout e Acesso Negado.
-    // ============================================================================
+    [Authorize] //modificações
     public class ContaController : Controller
     {
-        // ---------------------------------------------------------------------------
-        // SignInManager<Usuario>: Serviço do Identity que gerencia SESSÕES de login.
-        // É ele quem cria o cookie de autenticação, valida senha, verifica lockout,
-        // e encerra a sessão no logout. Sem ele, não existe login/logout funcional.
-        // ---------------------------------------------------------------------------
         private readonly SignInManager<Usuario> _signInManager;
-
-        // ---------------------------------------------------------------------------
-        // UserManager<Usuario>: Serviço do Identity que gerencia o CADASTRO de usuários.
-        // Permite criar, buscar, atualizar e excluir usuários, verificar senhas,
-        // adicionar roles, gerar tokens de reset, etc.
-        // ---------------------------------------------------------------------------
         private readonly UserManager<Usuario> _userManager;
-
-        // O construtor recebe os serviços via Injeção de Dependência (DI).
-        // O ASP.NET Core resolve automaticamente esses serviços porque foram
-        // registrados no Program.cs com AddIdentity<Usuario, IdentityRole>().
         public ContaController(SignInManager<Usuario> signInManager, UserManager<Usuario> userManager)
         {
             _signInManager = signInManager;
@@ -165,6 +142,66 @@ namespace DULCIESBOLOS.Controllers
             // "anônimo" e precisará fazer login novamente para acessar áreas protegidas.
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        // =======================================================================
+        // GET /Conta/Registro — Exibe o formulário de cadastro de novo Cliente
+        // =======================================================================
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Registro(string? returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        // =======================================================================
+        // POST /Conta/Registro — Processa o cadastro de novo Cliente
+        // =======================================================================
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Registro(RegistroViewModel model, string? returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var usuario = new Usuario
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    NomeCompleto = model.NomeCompleto,
+                    PhoneNumber = model.Telefone ?? string.Empty,
+                    Endereco = model.Endereco ?? string.Empty,
+                    EmailConfirmed = true
+                };
+
+                var resultado = await _userManager.CreateAsync(usuario, model.Senha);
+
+                if (resultado.Succeeded)
+                {
+                    // Todo novo usuário registrado pelo formulário recebe automaticamente a Role "Cliente"
+                    await _userManager.AddToRoleAsync(usuario, "Cliente");
+
+                    // Realiza o login imediato do cliente recém-cadastrado
+                    await _signInManager.SignInAsync(usuario, isPersistent: false);
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                foreach (var erro in resultado.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, erro.Description);
+                }
+            }
+
+            return View(model);
         }
 
         // =======================================================================
