@@ -20,8 +20,15 @@
 
                         <!-- Cliente -->
                         <div class="form-group mb-3">
-                            <label asp-for="UsuarioId" class="form-label fw-semibold">Cliente</label>
-                            <select asp-for="UsuarioId" class="form-select" asp-items="ViewBag.UsuarioId"></select>
+                            <label class="form-label fw-semibold">Cliente</label>
+                            @if (User.IsInRole("Admin") && ViewBag.UsuarioId != null)
+                            {
+                                <select asp-for="UsuarioId" class="form-select" asp-items="ViewBag.UsuarioId"></select>
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control bg-light" value="@(Model.Usuario?.NomeCompleto ?? Model.Usuario?.Email ?? User.Identity?.Name)" readonly disabled />
+                            }
                             <span asp-validation-for="UsuarioId" class="text-danger small"></span>
                         </div>
 
@@ -40,17 +47,28 @@
                         </div>
 
                         <!-- Status do Pedido -->
-                        <div class="form-group mb-3">
-                            <label asp-for="Status" class="form-label fw-semibold">Status do Pedido</label>
-                            <select asp-for="Status" class="form-select">
-                                <option value="Pendente">Pendente</option>
-                                <option value="Em Produção">Em Produção</option>
-                                <option value="Pronto para Entrega">Pronto para Entrega</option>
-                                <option value="Entregue">Entregue</option>
-                                <option value="Cancelado">Cancelado</option>
-                            </select>
-                            <span asp-validation-for="Status" class="text-danger small"></span>
-                        </div>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="form-group mb-3">
+                                <label asp-for="Status" class="form-label fw-semibold">Status do Pedido</label>
+                                <select asp-for="Status" class="form-select">
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Em Produção">Em Produção</option>
+                                    <option value="Pronto para Entrega">Pronto para Entrega</option>
+                                    <option value="Entregue">Entregue</option>
+                                    <option value="Cancelado">Cancelado</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger small"></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group mb-3">
+                                <label class="form-label fw-semibold">Status do Pedido</label>
+                                <input type="text" class="form-control bg-light" value="@Model.Status" readonly disabled />
+                                <small class="text-muted">Apenas o administrador da confeitaria pode alterar o status do pedido.</small>
+                            </div>
+                        }
 
                         <!-- Forma de Pagamento -->
                         <div class="form-group mb-4">

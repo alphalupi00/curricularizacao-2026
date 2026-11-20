@@ -74,34 +74,6 @@ namespace DULCIESBOLOS.Migrations
                     b.ToTable("Bolo");
                 });
 
-            modelBuilder.Entity("DULCIESBOLOS.Models.Funcionario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("horarioServico")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Funcionario");
-                });
-
             modelBuilder.Entity("DULCIESBOLOS.Models.Pagamento", b =>
                 {
                     b.Property<int>("Id")

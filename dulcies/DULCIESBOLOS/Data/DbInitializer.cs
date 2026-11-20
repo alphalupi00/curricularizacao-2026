@@ -48,6 +48,31 @@ namespace DULCIESBOLOS.Data
                     await userManager.AddToRoleAsync(newAdmin, "Admin");
                 }
             }
+
+            // 3. Criar o Usuário Cliente padrão se não existir
+            string clienteEmail = "cliente@dulciesbolos.com";
+            var clienteUser = await userManager.FindByEmailAsync(clienteEmail);
+
+            if (clienteUser == null)
+            {
+                var newCliente = new Usuario
+                {
+                    UserName = clienteEmail,
+                    Email = clienteEmail,
+                    NomeCompleto = "Cliente Padrão",
+                    Endereco = "Rua das Delícias, 123",
+                    PhoneNumber = "11988888888",
+                    EmailConfirmed = true
+                };
+
+                var resultCliente = await userManager.CreateAsync(newCliente, "Cliente@123");
+
+                if (resultCliente.Succeeded)
+                {
+                    // Associa ao perfil de Cliente
+                    await userManager.AddToRoleAsync(newCliente, "Cliente");
+                }
+            }
         }
     }
 }

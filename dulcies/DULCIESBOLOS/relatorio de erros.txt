@@ -1,11 +1,24 @@
 🔴 Problemas Críticos
-Nenhum controller tem [Authorize] — toda a configuração de Identity/Login é inútil, qualquer visitante anônimo acessa tudo
-Não existe ContaController — o LoginPath = "/Conta/Login" aponta para uma rota que não existe (daria 404)
-float para valores monetários em Bolo e Acrescimo — causa perda de precisão (ex: R$ 19.99 vira 19.989999...). Deveria ser decimal
+1: float para valores monetários em Bolo e Acrescimo — causa perda de precisão (ex: R$ 19.99 vira 19.989999...). Deveria ser decimal
 🟠 Problemas Médios
-Versões de pacotes NuGet incompatíveis — Identity 10.0.14 vs EF Core 10.0.13
-Vulnerabilidade alta no pacote System.Security.Cryptography.Pkcs
+2: Versões de pacotes NuGet incompatíveis — Identity 10.0.14 vs EF Core 10.0.13
+3: Vulnerabilidade alta no pacote System.Security.Cryptography.Pkcs
 🟡 Problemas Menores
-Nomenclatura inconsistente (camelCase vs PascalCase)
-Connection strings duplicadas que não são usadas
-Faltam scripts de validação e asp-validation-for em views
+4: Nomenclatura inconsistente (camelCase vs PascalCase)
+5: Connection strings duplicadas que não são usadas
+6: Faltam scripts de validação e asp-validation-for em views
+
+✅ Problemas Resolvidos
+- Autorização e Segurança por Papéis (Roles) 100% implementada:
+  * [Authorize(Roles = "Admin")] em Bolos, Acrescimos, Pagamentos e AgruparBolo (apenas Administrador acessa).
+  * [Authorize] em Vendas (qualquer usuário logado pode operar).
+  * [AllowAnonymous] na Galeria de Bolos e na Home Index (vitrine pública para visitantes deslogados).
+  * [AllowAnonymous] em Login, Registro e AcessoNegado no ContaController.
+- Tabela de Funcionários removida do banco e do código (model, controller, views, layout e migration aplicada).
+- Sistema estruturado exclusivamente em contas de Administrador (Admin) e Cliente (Cliente).
+- ContaController funcional com rotas e views de Login, Logout, Registro de Clientes e Acesso Negado.
+- Carga inicial (Seed) configurada com Admin (admin@dulciesbolos.com) e Cliente (cliente@dulciesbolos.com).
+- Menu lateral atualizado para exibir o usuário autenticado, badge de perfil (Admin/Cliente) e botão de Sair/Entrar.
+- Cadastro de Vendas corrigido (validação de propriedades de navegação e dropdown rico com Sabor + Tamanho P/M/G)
+- Botoes e views traduzidos para Portugues (Editar, Detalhes, Excluir, Voltar, Salvar)
+- Tamanho do bolo restrito e padronizado em P, M ou G no cadastro e nas vendas

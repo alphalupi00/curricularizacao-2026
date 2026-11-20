@@ -1,9 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization; //modificações
 using Microsoft.AspNetCore.Mvc;
 using DULCIESBOLOS.Services;
 
 namespace DULCIESBOLOS.Controllers
 {
+    [Authorize(Roles = "Admin")] //modificações
     public class AgruparBoloController : Controller
     {
         private readonly IPivotService _pivotService;

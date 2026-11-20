@@ -15,13 +15,11 @@
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                        <!-- Cliente -->
+                        <!-- Cliente Identificado -->
                         <div class="form-group mb-3">
-                            <label asp-for="UsuarioId" class="form-label fw-semibold">Cliente</label>
-                            <select asp-for="UsuarioId" class="form-select" asp-items="ViewBag.UsuarioId">
-                                <option value="">-- Selecione o Cliente</option>
-                            </select>
-                            <span asp-validation-for="UsuarioId" class="text-danger small"></span>
+                            <label class="form-label fw-semibold">Cliente</label>
+                            <input type="text" class="form-control bg-light" value="@(User.Identity?.Name ?? "Usuário Atual")" readonly disabled />
+                            <small class="form-text text-muted">O pedido será registrado automaticamente para a sua conta.</small>
                         </div>
 
                         <!-- Bolo (Sabor e Tamanho P, M ou G no menuzinho que desce) -->
