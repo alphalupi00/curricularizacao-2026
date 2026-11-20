@@ -13,18 +13,17 @@ namespace DULCIESBOLOS.Controllers
             _pivotService = pivotService;
         }
 
-        // GET: /AgruparBolo/Pivot?tipo=cliente (ou ?tipo=mes)
-        public async Task<IActionResult> Pivot(string tipo = "cliente")
+        // GET: /AgruparBolo/Pivot
+        public async Task<IActionResult> Pivot()
         {
-            var viewModel = await _pivotService.ObterPivotVendasPorSaborAsync(tipo);
+            var viewModel = await _pivotService.ObterPivotVendasPorSaborAsync();
             return View(viewModel);
         }
 
         // GET: /AgruparBolo
-        public async Task<IActionResult> Index(string tipo = "cliente")
+        public async Task<IActionResult> Index()
         {
-            var viewModel = await _pivotService.ObterPivotVendasPorSaborAsync(tipo);
-            return View("Pivot", viewModel);
+            return await Pivot();
         }
     }
 }

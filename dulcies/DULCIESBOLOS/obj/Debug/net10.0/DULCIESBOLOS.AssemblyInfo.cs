@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DULCIESBOLOS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9abca85c3e0058056ca68c878b7aaea76dc7880d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c7ea57449db63c7dafab75b7712473aa74be99")]
 [assembly: System.Reflection.AssemblyProductAttribute("DULCIESBOLOS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DULCIESBOLOS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

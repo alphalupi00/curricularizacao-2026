@@ -5,6 +5,6 @@ namespace DULCIESBOLOS.Services
 {
     public interface IPivotService
     {
-        Task<PivotBolosViewModel> ObterPivotVendasPorSaborAsync(string tipoAgrupamento = "cliente");
+        Task<PivotBolosViewModel> ObterPivotVendasPorSaborAsync();
     }
 }

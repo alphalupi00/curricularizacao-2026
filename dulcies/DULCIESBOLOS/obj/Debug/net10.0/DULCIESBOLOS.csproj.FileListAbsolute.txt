@@ -1037,6 +1037,17 @@ C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\obj\Debug\net
 C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.pdb
 C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.genruntimeconfig.cache
 C:\Users\FEMA\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\obj\Debug\net10.0\ref\DULCIESBOLOS.dll
+C:\Users\LABORINFO\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\bin\Debug\net10.0\EFCore.Tools.dll
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.csproj.AssemblyReference.cache
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.AssemblyInfoInputs.cache
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.AssemblyInfo.cs
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.csproj.CoreCompileInputs.cache
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.RazorAssemblyInfo.cache
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.RazorAssemblyInfo.cs
+C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.sourcelink.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\appsettings.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\DULCIESBOLOS.staticwebassets.runtime.json
@@ -1294,16 +1305,6 @@ C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\runtimes\win-arm64\native\msalruntime_arm64.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\runtimes\win-x64\native\msalruntime.dll
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\bin\Debug\net10.0\runtimes\win-x86\native\msalruntime_x86.dll
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.csproj.AssemblyReference.cache
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.AssemblyInfoInputs.cache
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.AssemblyInfo.cs
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.csproj.CoreCompileInputs.cache
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.RazorAssemblyInfo.cache
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.RazorAssemblyInfo.cs
-C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.sourcelink.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -1385,4 +1386,3 @@ C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.pdb
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\DULCIESBOLOS.genruntimeconfig.cache
 C:\Users\sarah\OneDrive\Área de Trabalho\curricularizaçao\dulcies\DULCIESBOLOS\obj\Debug\net10.0\ref\DULCIESBOLOS.dll
-C:\Users\LABORINFO\Downloads\curricularizacao-2026\dulcies\DULCIESBOLOS\bin\Debug\net10.0\EFCore.Tools.dll

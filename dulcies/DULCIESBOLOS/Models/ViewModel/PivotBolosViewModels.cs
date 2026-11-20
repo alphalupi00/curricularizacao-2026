@@ -1,21 +1,25 @@
 using System.Collections.Generic;
-using DULCIESBOLOS.Models;
 
 namespace DULCIESBOLOS.Models.ViewModel
 {
-    /// <summary>
-    /// Modelo da Tabela Pivot de Vendas por Sabor de Bolo.
-    /// Contém os sabores de bolos cadastrados como colunas, as linhas agrupadas
-    /// e os totais gerais calculados.
-    /// </summary>
+
+    public class ColunaMesViewModel
+    {
+        public int Ano { get; set; }
+        public int Mes { get; set; }
+        public string Chave => $"{Ano}-{Mes:D2}";
+        public string NomeMesFormatado { get; set; } = string.Empty;
+    }
+
     public class PivotBolosViewModel
     {
-        public List<Bolo> Sabores { get; set; } = new();
+
+        public List<ColunaMesViewModel> ColunasMeses { get; set; } = new();
         public List<PivotRowViewModel> Linhas { get; set; } = new();
-        public Dictionary<int, string> TotaisPorSabor { get; set; } = new();
-        public string TipoAgrupamento { get; set; } = "cliente";
+        public Dictionary<string, string> TotaisPorMes { get; set; } = new();
+        public Dictionary<string, decimal> FaturamentoPorMes { get; set; } = new();
         public int QuantidadeGeralTotal { get; set; } = 0;
-        public string QuantidadeGeralTotalFormatada { get; set; } = string.Empty;
+        public string QuantidadeGeralTotalFormatada => $"{QuantidadeGeralTotal} unidade(s)";
         public decimal ValorGeralTotal { get; set; } = 0;
         public string ValorGeralTotalFormatado => ValorGeralTotal.ToString("C2");
     }
