@@ -98,10 +98,10 @@ namespace DULCIESBOLOS.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IactionResult AcessoNegado() => view();
+        public IActionResult AcessoNegado() => View();
 
         private IActionResult RedirecionarLocal(string? returnUrl) =>
-            !string.IsNullOrEmpty(returnUrl) && returnUrl.IsLocalUrl(returnUrl)
+            !string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl)
                 ? Redirect(returnUrl)
                 : RedirectToAction("Index", "Home");
     }
