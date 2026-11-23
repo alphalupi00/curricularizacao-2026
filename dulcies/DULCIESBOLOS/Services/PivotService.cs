@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DULCIESBOLOS.Services
 {
 
-    public class PivotService : IPivotService
+    public class PivotService
     {
         private readonly AppDBContext _context;
 
@@ -31,7 +31,6 @@ namespace DULCIESBOLOS.Services
 
 
             var vendas = await _context.Venda
-                .Include(v => v.Bolo)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -69,22 +68,17 @@ namespace DULCIESBOLOS.Services
             }
 
 
-            var acumuladorQtdMes = colunasMeses.ToDictionary(c => c.Chave, _ => 0);
-            var acumuladorValorMes = colunasMeses.ToDictionary(c => c.Chave, _ => 0m);
-
-            //PIVOT
+            // PIVOT: Monta as linhas para cada sabor e tamanho
             var linhas = new List<PivotRowViewModel>();
 
             foreach (var bolo in bolos)
             {
                 var linha = new PivotRowViewModel
                 {
-                    BoloId = bolo.Id,
                     Sabor = bolo.Descricao,
                     Tamanho = bolo.Tamanho?.ToUpper() ?? "M",
                     PrecoUnitario = (decimal)bolo.Valor
                 };
-
 
                 var vendasDoBoloPorMes = vendas
                     .Where(v => v.boloId == bolo.Id)
@@ -98,7 +92,6 @@ namespace DULCIESBOLOS.Services
                         }
                     );
 
-
                 foreach (var col in colunasMeses)
                 {
                     if (vendasDoBoloPorMes.TryGetValue(col.Chave, out var dados) && dados.Quantidade > 0)
@@ -106,13 +99,9 @@ namespace DULCIESBOLOS.Services
                         linha.VendasPorMes[col.Chave] = $"{dados.Quantidade} un";
                         linha.TotalQuantidade += dados.Quantidade;
                         linha.TotalValorReais += dados.ValorTotal;
-
-                        acumuladorQtdMes[col.Chave] += dados.Quantidade;
-                        acumuladorValorMes[col.Chave] += dados.ValorTotal;
                     }
                     else
                     {
-
                         linha.VendasPorMes[col.Chave] = "-";
                     }
                 }
@@ -120,21 +109,10 @@ namespace DULCIESBOLOS.Services
                 linhas.Add(linha);
             }
 
-
-            var totaisPorMes = new Dictionary<string, string>();
-            foreach (var col in colunasMeses)
-            {
-                int totalQtd = acumuladorQtdMes[col.Chave];
-                totaisPorMes[col.Chave] = totalQtd > 0 ? $"{totalQtd} un" : "-";
-            }
-
-
             var viewModel = new PivotBolosViewModel
             {
                 ColunasMeses = colunasMeses,
                 Linhas = linhas,
-                TotaisPorMes = totaisPorMes,
-                FaturamentoPorMes = acumuladorValorMes,
                 QuantidadeGeralTotal = vendas.Sum(v => v.Quantidade),
                 ValorGeralTotal = vendas.Sum(v => v.Valor)
             };

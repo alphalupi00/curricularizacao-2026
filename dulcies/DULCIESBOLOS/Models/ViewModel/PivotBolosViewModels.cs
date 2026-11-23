@@ -13,11 +13,8 @@ namespace DULCIESBOLOS.Models.ViewModel
 
     public class PivotBolosViewModel
     {
-
         public List<ColunaMesViewModel> ColunasMeses { get; set; } = new();
         public List<PivotRowViewModel> Linhas { get; set; } = new();
-        public Dictionary<string, string> TotaisPorMes { get; set; } = new();
-        public Dictionary<string, decimal> FaturamentoPorMes { get; set; } = new();
         public int QuantidadeGeralTotal { get; set; } = 0;
         public string QuantidadeGeralTotalFormatada => $"{QuantidadeGeralTotal} unidade(s)";
         public decimal ValorGeralTotal { get; set; } = 0;

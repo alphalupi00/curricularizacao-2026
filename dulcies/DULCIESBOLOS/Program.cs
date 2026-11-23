@@ -14,7 +14,7 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Registra o Serviço de Agrupamento e Pivot
-builder.Services.AddScoped<IPivotService, PivotService>();
+builder.Services.AddScoped<PivotService>();
 
 // Configuração dos Serviços do ASP.NET Core Identity
 builder.Services.AddIdentity<Usuario, IdentityRole>(options =>

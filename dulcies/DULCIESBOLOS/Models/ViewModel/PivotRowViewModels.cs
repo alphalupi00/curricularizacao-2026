@@ -5,7 +5,6 @@ namespace DULCIESBOLOS.Models.ViewModel
 
     public class PivotRowViewModel
     {
-        public int BoloId { get; set; }
         public string Sabor { get; set; } = string.Empty;
         public string Tamanho { get; set; } = string.Empty;
         public decimal PrecoUnitario { get; set; } = 0;
