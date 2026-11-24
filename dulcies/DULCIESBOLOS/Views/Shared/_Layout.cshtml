@@ -18,12 +18,13 @@
         <ul class="nav flex-column flex-grow-1">
             <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Home" asp-action="Index">🏠 Home</a></li>
             <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="GaleriaBolos" asp-action="Index">🎂 Galeria</a></li>
+            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Vendas" asp-action="Index">🛍️ Pedidos</a></li>
             
 
-          @if (User.Identity?.IsAuthenticated == true)
+          @if (User.IsInRole("Admin"))
             {
                 <li class="nav-item mb-1 text-muted small text-uppercase fw-bold px-3 pt-2">Administração</li>
-                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Vendas" asp-action="Index">🛍️ Vendas / Pedidos</a></li>
+                
                 <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Bolos" asp-action="Index">🍰 Bolos</a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Acrescimos" asp-action="Index">✨ Acréscimos</a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Pagamentos" asp-action="Index">💳 Pagamentos</a></li>

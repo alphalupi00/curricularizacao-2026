@@ -13,7 +13,7 @@ using DULCIESBOLOS.Models;
 
 namespace DULCIESBOLOS.Controllers
 {
-    [Authorize] //modificações - Apenas usuários autenticados (Admin ou Cliente) podem acessar
+    [Authorize] //Apenas usuários autenticados (Admin ou Cliente) podem acessar
     public class VendasController : Controller
     {
         private readonly AppDBContext _context;
@@ -29,12 +29,9 @@ namespace DULCIESBOLOS.Controllers
         private string? ObterUsuarioIdAtual() => _userManager.GetUserId(User);
         private bool IsAdmin() => User.IsInRole("Admin");
 
-        // =======================================================================
-        // GET: Vendas
-        // =======================================================================
         // Se Admin: lista todas as vendas de todos os clientes.
         // Se Cliente: lista APENAS os seus próprios pedidos.
-        // =======================================================================
+        
         public async Task<IActionResult> Index()
         {
             var userId = ObterUsuarioIdAtual();
@@ -46,7 +43,7 @@ namespace DULCIESBOLOS.Controllers
                 .Include(v => v.Pagamento)
                 .AsQueryable();
 
-            // Proteção contra acesso a dados alheios: filtra por usuário se não for Admin
+            // filtra por usuário se não for Admin
             if (!isAdmin)
             {
                 query = query.Where(v => v.UsuarioId == userId);
@@ -56,11 +53,8 @@ namespace DULCIESBOLOS.Controllers
             return View(vendas);
         }
 
-        // =======================================================================
-        // GET: Vendas/Details/5
-        // =======================================================================
+    
         // Proteção IDOR: Cliente só pode ver detalhes das próprias vendas.
-        // =======================================================================
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -79,7 +73,7 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
 
-            // SEGURANÇA (IDOR): Impede que um cliente veja a venda de outro pela URL
+            //Impede que um cliente veja a venda de outro pela URL
             var userId = ObterUsuarioIdAtual();
             if (!IsAdmin() && venda.UsuarioId != userId)
             {
@@ -89,24 +83,17 @@ namespace DULCIESBOLOS.Controllers
             return View(venda);
         }
 
-        // =======================================================================
-        // GET: Vendas/Create
-        // =======================================================================
+       
         public async Task<IActionResult> Create()
         {
             await CarregarListasDropdownAsync();
             return View();
         }
 
-        // =======================================================================
-        // POST: Vendas/Create
-        // =======================================================================
-        // SEGURANÇA: UsuarioId NÃO é aceito no Bind vindo do navegador.
-        // O dono da venda é SEMPRE injetado pelo usuário autenticado via UserManager.
-        // =======================================================================
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("boloId,Quantidade,formaPagamentoId")] Venda venda)
+        public async Task<IActionResult> Create([Bind("boloId,Quantidade,formaPagamentoId")] Venda venda, int? AcrescimoId = null)
         {
             // Atribui obrigatoriamente o dono da venda a partir do usuário autenticado
             var usuarioAtual = await _userManager.GetUserAsync(User);
@@ -116,13 +103,24 @@ namespace DULCIESBOLOS.Controllers
             }
             venda.UsuarioId = usuarioAtual.Id;
 
-            // Busca o bolo selecionado para calcular o valor total com base no preço e quantidade
+            // Busca acréscimo se selecionado
+            decimal valorAcrescimo = 0m;
+            if (AcrescimoId.HasValue)
+            {
+                var acrescimo = await _context.Acrescimo.FindAsync(AcrescimoId.Value);
+                if (acrescimo != null)
+                {
+                    valorAcrescimo = acrescimo.Valor;
+                }
+            }
+
+            // Busca o bolo selecionado para calcular o valor total com base no preço, quantidade e acréscimo
             if (venda.boloId.HasValue)
             {
                 var bolo = await _context.Bolo.FindAsync(venda.boloId.Value);
                 if (bolo != null)
                 {
-                    venda.Valor = (decimal)bolo.Valor * venda.Quantidade;
+                    venda.Valor = ((decimal)bolo.Valor * venda.Quantidade) + valorAcrescimo;
                 }
             }
 
@@ -146,11 +144,9 @@ namespace DULCIESBOLOS.Controllers
             return View(venda);
         }
 
-        // =======================================================================
-        // GET: Vendas/Edit/5
-        // =======================================================================
+    
         // Proteção IDOR: Cliente só pode abrir a tela de edição dos seus próprios pedidos.
-        // =======================================================================
+       
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -167,7 +163,7 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
 
-            // SEGURANÇA (IDOR): Impede que um cliente edite o pedido de outro pela URL
+            // Impede que um cliente edite o pedido de outro pela URL
             var userId = ObterUsuarioIdAtual();
             if (!IsAdmin() && venda.UsuarioId != userId)
             {
@@ -178,14 +174,12 @@ namespace DULCIESBOLOS.Controllers
             return View(venda);
         }
 
-        // =======================================================================
-        // POST: Vendas/Edit/5
-        // =======================================================================
+    
         // Proteção IDOR e Integridade:
         // - Garante que o cliente só edita o próprio pedido.
         // - Mantém o UsuarioId e DataVenda originais protegidos contra manipulação.
         // - Apenas Administrador pode alterar o Status do pedido.
-        // =======================================================================
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,boloId,Quantidade,formaPagamentoId,Status")] Venda venda)
@@ -202,7 +196,7 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
 
-            // SEGURANÇA (IDOR): Cliente só pode salvar edição das suas próprias vendas
+            //  Cliente só pode salvar edição das suas próprias vendas
             var userId = ObterUsuarioIdAtual();
             var isAdmin = IsAdmin();
             if (!isAdmin && vendaExistente.UsuarioId != userId)
@@ -260,11 +254,8 @@ namespace DULCIESBOLOS.Controllers
             return View(venda);
         }
 
-        // =======================================================================
-        // GET: Vendas/Delete/5
-        // =======================================================================
-        // Proteção IDOR: Cliente só pode ver a tela de exclusão do seu próprio pedido.
-        // =======================================================================
+      
+        // Cliente só pode ver a tela de exclusão do seu próprio pedido.
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -283,7 +274,7 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
 
-            // SEGURANÇA (IDOR): Impede que um cliente exclua o pedido de outro pela URL
+            //  Impede que um cliente exclua o pedido de outro pela URL
             var userId = ObterUsuarioIdAtual();
             if (!IsAdmin() && venda.UsuarioId != userId)
             {
@@ -293,11 +284,7 @@ namespace DULCIESBOLOS.Controllers
             return View(venda);
         }
 
-        // =======================================================================
-        // POST: Vendas/Delete/5
-        // =======================================================================
-        // Proteção IDOR na exclusão efetiva.
-        // =======================================================================
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -308,7 +295,7 @@ namespace DULCIESBOLOS.Controllers
                 return NotFound();
             }
 
-            // SEGURANÇA (IDOR): Impede exclusão não autorizada
+            //Impede exclusão não autorizada
             var userId = ObterUsuarioIdAtual();
             if (!IsAdmin() && venda.UsuarioId != userId)
             {
@@ -325,10 +312,7 @@ namespace DULCIESBOLOS.Controllers
             return _context.Venda.Any(e => e.Id == id);
         }
 
-        /// <summary>
-        /// Carrega os menus suspensos (dropdowns) com informações amigáveis.
-        /// O dropdown de Usuários só é carregado se o usuário for Admin.
-        /// </summary>
+    
         private async Task CarregarListasDropdownAsync(int? boloId = null, int? formaPagamentoId = null, string? usuarioId = null)
         {
             var bolos = await _context.Bolo
@@ -349,6 +333,18 @@ namespace DULCIESBOLOS.Controllers
                 .ToListAsync();
 
             ViewData["formaPagamentoId"] = new SelectList(pagamentos, "Id", "descricao", formaPagamentoId);
+
+            var acrescimos = await _context.Acrescimo
+                .OrderBy(a => a.Descricao)
+                .ToListAsync();
+
+            var listaAcrescimos = acrescimos.Select(a => new
+            {
+                Id = a.Id,
+                TextoExibicao = $"{a.Descricao} ({a.Quantidade}) - R$ {a.Valor:N2}"
+            }).ToList();
+
+            ViewData["AcrescimoId"] = new SelectList(listaAcrescimos, "Id", "TextoExibicao");
 
             if (IsAdmin())
             {

@@ -50,15 +50,20 @@
                     <img src="@Url.Content(bolo.Imagem)" alt="@bolo.Nome" class="card-bolo-img" />
                 </div>
                 <div class="card-bolo-body">
-                    <div>
-                        <h5 class="card-bolo-titulo">@bolo.Nome</h5>
-                        <p class="card-bolo-desc">@bolo.Descricao</p>
-                    </div>
-                    <a asp-controller="Vendas" asp-action="Index" class="btn-encomendar">
-                        Fazer pedido
-                    </a>
+                    <h5 class="card-bolo-titulo">@bolo.Nome</h5>
+                    <p class="card-bolo-desc mb-0">@bolo.Descricao</p>
                 </div>
             </div>
         </div>
     }
+</div>
+
+<div class="text-center my-5 py-3">
+    <div class="p-4 rounded-4 shadow-sm" style="background-color: #fff0f5; border: 1px solid #1f1f1f; max-width: 650px; margin: 0 auto;">
+        <h4 class="mb-2" style="font-family: Georgia, serif; color: #222;">Gostou dos nossos sabores?</h4>
+        <p class="text-muted mb-3">Escolha o seu bolo preferido, o tamanho ideal e monte com os adicionais que desejar!</p>
+        <a asp-controller="Vendas" asp-action="Create" class="btn btn-lg px-5 py-3 fw-bold rounded-pill" style="background-color: #ffe4eC; color: #1f1f1f; border: 1px solid #1f1f1f; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+            🛍️ Faça seu pedido agora
+        </a>
+    </div>
 </div>

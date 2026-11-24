@@ -1,56 +1,108 @@
 @model DULCIESBOLOS.Models.Venda
+@inject DULCIESBOLOS.Data.AppDBContext DbContext
 
 @{
-    ViewData["Title"] = "Novo Pedido de Venda";
+    ViewData["Title"] = "Fazer Pedido";
+    var bolosDb = DbContext.Bolo.OrderBy(b => b.Descricao).ThenBy(b => b.Tamanho).ToList();
+    var sabores = bolosDb.Select(b => b.Descricao).Distinct().ToList();
+    var acrescimosDb = DbContext.Acrescimo.OrderBy(a => a.Descricao).ToList();
 }
 
 <div class="container py-3">
     <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-8 col-lg-7">
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white border-bottom py-3">
-                    <h3 class="card-title mb-0" style="color: #333;">🛒 Novo Pedido de Venda</h3>
+                    <h3 class="card-title mb-0" style="color: #333;">🛍️ Fazer Pedido</h3>
                 </div>
                 <div class="card-body p-4">
-                    <form asp-action="Create">
+                    <form asp-action="Create" id="formPedido">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                         <!-- Cliente Identificado -->
                         <div class="form-group mb-3">
                             <label class="form-label fw-semibold">Cliente</label>
                             <input type="text" class="form-control bg-light" value="@(User.Identity?.Name ?? "Usuário Atual")" readonly disabled />
-                            <small class="form-text text-muted">O pedido será registrado automaticamente para a sua conta.</small>
+                            <small class="form-text text-muted">O pedido será registrado para sua conta.</small>
                         </div>
 
-                        <!-- Bolo (Sabor e Tamanho P, M ou G no menuzinho que desce) -->
+                        <!-- SELEÇÃO 1: Sabor do Bolo -->
                         <div class="form-group mb-3">
-                            <label asp-for="boloId" class="form-label fw-semibold">Bolo (Sabor e Tamanho P, M ou G)</label>
-                            <select asp-for="boloId" class="form-select" asp-items="ViewBag.boloId">
-                                <option value="">-- Selecione o Bolo e Tamanho</option>
+                            <label for="selectSabor" class="form-label fw-semibold">🍰 1. Escolha o Bolo (Sabor)</label>
+                            <select id="selectSabor" class="form-select">
+                                <option value="">-- Selecione o Sabor do Bolo --</option>
+                                @foreach (var sabor in sabores)
+                                {
+                                    <option value="@sabor">@sabor</option>
+                                }
                             </select>
-                            <small class="form-text text-muted">O preço total é calculado automaticamente a partir do bolo selecionado.</small>
+                        </div>
+
+                        <!-- SELEÇÃO 2: Tamanho do Bolo (P, M ou G) -->
+                        <div class="form-group mb-3">
+                            <label for="selectTamanho" class="form-label fw-semibold">📏 2. Escolha o Tamanho</label>
+                            <select id="selectTamanho" class="form-select" disabled>
+                                <option value="">-- Primeiro selecione o sabor acima --</option>
+                            </select>
+                            <span id="tamanhoErro" class="text-danger small d-none">Por favor, selecione o tamanho do bolo.</span>
                             <span asp-validation-for="boloId" class="text-danger small d-block"></span>
+                        </div>
+
+                        <!-- Campo oculto enviado ao servidor com o boloId selecionado -->
+                        <input type="hidden" asp-for="boloId" id="boloIdHidden" />
+
+                        <!-- SELEÇÃO 3: Acréscimo / Adicional (Opcional) -->
+                        <div class="form-group mb-3">
+                            <label for="selectAcrescimo" class="form-label fw-semibold">✨ 3. Acréscimo / Adicional (Opcional)</label>
+                            <select name="AcrescimoId" id="selectAcrescimo" class="form-select">
+                                <option value="" data-valor="0">-- Nenhum acréscimo --</option>
+                                @foreach (var ac in acrescimosDb)
+                                {
+                                    <option value="@ac.Id" data-valor="@ac.Valor">
+                                        @ac.Descricao (@ac.Quantidade) - R$ @ac.Valor.ToString("N2")
+                                    </option>
+                                }
+                            </select>
+                            <small class="form-text text-muted">Escolha um item extra ou cobertura adicional.</small>
                         </div>
 
                         <!-- Quantidade -->
                         <div class="form-group mb-3">
-                            <label asp-for="Quantidade" class="form-label fw-semibold">Quantidade</label>
-                            <input asp-for="Quantidade" class="form-control" type="number" min="1" max="20" value="1" />
+                            <label asp-for="Quantidade" class="form-label fw-semibold">🔢 Quantidade</label>
+                            <input asp-for="Quantidade" id="inputQuantidade" class="form-control" type="number" min="1" max="20" value="1" />
                             <span asp-validation-for="Quantidade" class="text-danger small"></span>
                         </div>
 
                         <!-- Forma de Pagamento -->
                         <div class="form-group mb-4">
-                            <label asp-for="formaPagamentoId" class="form-label fw-semibold">Forma de Pagamento</label>
+                            <label asp-for="formaPagamentoId" class="form-label fw-semibold">💳 Forma de Pagamento</label>
                             <select asp-for="formaPagamentoId" class="form-select" asp-items="ViewBag.formaPagamentoId">
-                                <option value="">-- Selecione a Forma de Pagamento</option>
+                                <option value="">-- Selecione a Forma de Pagamento --</option>
                             </select>
                             <span asp-validation-for="formaPagamentoId" class="text-danger small"></span>
                         </div>
 
+                        <!-- Resumo do Valor Estimado em Tempo Real -->
+                        <div class="alert alert-light border mb-4 p-3 rounded" id="painelResumo">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="text-muted">Preço Unitário do Bolo:</span>
+                                <strong id="resumoPrecoBolo">R$ 0,00</strong>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="text-muted">Acréscimo:</span>
+                                <strong id="resumoPrecoAcrescimo">R$ 0,00</strong>
+                            </div>
+                            <hr class="my-2" />
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold fs-6">Total do Pedido:</span>
+                                <span class="fs-5 fw-bold text-success" id="resumoTotal">R$ 0,00</span>
+                            </div>
+                        </div>
+
                         <div class="d-flex gap-2">
-                            <input type="submit" value="Salvar Pedido" class="btn btn-primary px-4" />
-                            <a asp-action="Index" class="btn btn-outline-secondary">Voltar para a Lista</a>
+                            <button type="submit" class="btn btn-primary px-4 fw-semibold">Confirmar Pedido</button>
+                            <a asp-controller="GaleriaBolos" asp-action="Index" class="btn btn-outline-secondary">Voltar à Galeria</a>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Meus Pedidos</a>
                         </div>
                     </form>
                 </div>
@@ -61,4 +113,109 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        // Dados de todos os bolos cadastrados no banco
+        const listaBolos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(bolosDb.Select(b => new {
+            id = b.Id,
+            sabor = b.Descricao,
+            tamanho = b.Tamanho.ToUpper(),
+            valor = b.Valor
+        })));
+
+        const selectSabor = document.getElementById('selectSabor');
+        const selectTamanho = document.getElementById('selectTamanho');
+        const selectAcrescimo = document.getElementById('selectAcrescimo');
+        const inputQtd = document.getElementById('inputQuantidade');
+        const boloIdHidden = document.getElementById('boloIdHidden');
+        const formPedido = document.getElementById('formPedido');
+        const tamanhoErro = document.getElementById('tamanhoErro');
+
+        const resumoPrecoBolo = document.getElementById('resumoPrecoBolo');
+        const resumoPrecoAcrescimo = document.getElementById('resumoPrecoAcrescimo');
+        const resumoTotal = document.getElementById('resumoTotal');
+
+        function formatarMoeda(valor) {
+            return 'R$ ' + valor.toFixed(2).replace('.', ',');
+        }
+
+        function atualizarCalculo() {
+            let precoUnitarioBolo = 0;
+            const tamanhoSelecionado = selectTamanho.selectedOptions[0];
+            if (tamanhoSelecionado && tamanhoSelecionado.dataset.valor) {
+                precoUnitarioBolo = parseFloat(tamanhoSelecionado.dataset.valor) || 0;
+            }
+
+            let precoAcrescimo = 0;
+            const acrescimoSelecionado = selectAcrescimo.selectedOptions[0];
+            if (acrescimoSelecionado && acrescimoSelecionado.dataset.valor) {
+                precoAcrescimo = parseFloat(acrescimoSelecionado.dataset.valor) || 0;
+            }
+
+            const qtd = parseInt(inputQtd.value, 10) || 1;
+            const total = (precoUnitarioBolo * qtd) + precoAcrescimo;
+
+            resumoPrecoBolo.textContent = formatarMoeda(precoUnitarioBolo);
+            resumoPrecoAcrescimo.textContent = formatarMoeda(precoAcrescimo);
+            resumoTotal.textContent = formatarMoeda(total);
+        }
+
+        // Quando o cliente escolhe o Sabor do Bolo:
+        selectSabor.addEventListener('change', function () {
+            const saborEscolhido = this.value;
+            selectTamanho.innerHTML = '';
+            boloIdHidden.value = '';
+            tamanhoErro.classList.add('d-none');
+
+            if (!saborEscolhido) {
+                selectTamanho.disabled = true;
+                const optPadrao = document.createElement('option');
+                optPadrao.value = '';
+                optPadrao.textContent = '-- Primeiro selecione o sabor acima --';
+                selectTamanho.appendChild(optPadrao);
+                atualizarCalculo();
+                return;
+            }
+
+            const bolosDoSabor = listaBolos.filter(b => b.sabor === saborEscolhido);
+
+            const optVazia = document.createElement('option');
+            optVazia.value = '';
+            optVazia.textContent = '-- Selecione o Tamanho --';
+            selectTamanho.appendChild(optVazia);
+
+            bolosDoSabor.forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b.id;
+                opt.dataset.valor = b.valor;
+                opt.textContent = `Tamanho ${b.tamanho} (R$ ${b.valor.toFixed(2).replace('.', ',')})`;
+                selectTamanho.appendChild(opt);
+            });
+
+            selectTamanho.disabled = false;
+            atualizarCalculo();
+        });
+
+        // Quando o cliente escolhe o Tamanho:
+        selectTamanho.addEventListener('change', function () {
+            boloIdHidden.value = this.value;
+            if (this.value) {
+                tamanhoErro.classList.add('d-none');
+            }
+            atualizarCalculo();
+        });
+
+        // Quando altera Acréscimo ou Quantidade:
+        selectAcrescimo.addEventListener('change', atualizarCalculo);
+        inputQtd.addEventListener('input', atualizarCalculo);
+
+        // Validação no envio:
+        formPedido.addEventListener('submit', function (e) {
+            if (!boloIdHidden.value) {
+                e.preventDefault();
+                tamanhoErro.classList.remove('d-none');
+                selectTamanho.focus();
+            }
+        });
+    </script>
 }
