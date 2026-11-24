@@ -29,3 +29,318 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+
+
+
+
+
+
+/* Bordado no menu */
+nav.menu::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 228px; 
+    width: 32px; 
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1002;
+    background-image: url('/images/borda-menu.png');
+    background-repeat: repeat-y;
+    background-position: left top;
+    background-size: 32px auto;
+}
+
+
+
+
+
+
+
+/* Galeria Bolos */
+
+.galeria-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.galeria-titulo {
+    font-family: Georgia, "Times New Roman", serif; 
+    color: #2b2124;
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+}
+
+.galeria-subtitulo {
+    color: #6c5860;
+    font-size: 0.98rem;
+    margin: 0;
+}
+
+.card-bolo {
+    background-color: #ffffff;
+    border: 1px solid #1f1f1f; 
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-bolo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.09);
+}
+
+.card-bolo-img-wrapper {
+    width: 100%;
+    height: 220px;
+    background-color: #ffe4eC; 
+    border-bottom: 1px solid #1f1f1f;
+    overflow: hidden;
+}
+
+.card-bolo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-bolo-body {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.card-bolo-titulo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 8px;
+    text-transform: capitalize; /* Deixa a primeira letra de cada palavra maiúscula */
+}
+
+.card-bolo-desc {
+    font-size: 0.9rem;
+    color: #555555;
+    margin-bottom: 14px;
+    line-height: 1.45;
+}
+
+.btn-encomendar {
+    background-color: #ffe4eC; 
+    color: #1f1f1f;
+    border: 1px solid #1f1f1f; 
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-encomendar:hover {
+    background-color: #f7cad8; 
+    color: #111111;
+}
+
+
+
+
+
+
+
+
+
+
+/*  Home  */
+
+.home-vitrine {
+    background-color: #fcf3f1;
+    width: 100%;
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.home-vitrine-full {
+    position: fixed;
+    top: 0;
+    left: 210px; 
+    right: 0;
+    bottom: 53px;
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    z-index: 1;
+}
+
+
+
+
+.home-sparkle-top {
+    position: absolute;
+    top: 28px;
+    right: 34px;
+    color: #dfb4b4;
+    pointer-events: none;
+}
+
+.home-bow-bottom {
+    position: absolute;
+    bottom: 18px;
+    right: 26px;
+    color: #dfb4b4;
+    pointer-events: none;
+}
+
+
+.home-carousel-wrapper {
+    position: relative;
+    padding: 0 44px;
+}
+
+.home-cake-frame {
+    width: 100%;
+    max-width: 440px;
+    height: 360px;
+    margin: 0 auto;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 900px;
+}
+
+.home-cake-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+    mix-blend-mode: multiply; 
+    transform-style: preserve-3d;
+    transition: transform 0.16s ease-out;
+    will-change: transform;
+}
+
+
+.home-carousel-btn {
+    width: 36px;
+    height: 36px;
+    background-color: #f3dada;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-carousel-btn:hover {
+    background-color: #e8c2c2;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.home-carousel-btn .carousel-control-prev-icon,
+.home-carousel-btn .carousel-control-next-icon {
+    width: 16px;
+    height: 16px;
+    filter: invert(27%) sepia(24%) saturate(850%) hue-rotate(314deg) brightness(88%) contrast(90%);
+}
+
+
+.home-carousel-indicators {
+    position: static;
+    margin-top: 18px;
+    margin-bottom: 0;
+    gap: 8px;
+}
+
+.home-carousel-indicators [data-bs-target] {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #e4c1c1;
+    border: none;
+    opacity: 1;
+    margin: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-carousel-indicators .active {
+    background-color: #b55d5d;
+    transform: scale(1.15);
+}
+
+
+.home-texto-box {
+    text-align: center;
+    padding: 12px 16px;
+}
+
+.home-ornamento-topo {
+    color: #c77c7c;
+    margin-bottom: 10px;
+}
+
+.home-titulo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3.3rem;
+    line-height: 1.08;
+    color: #6b3838;
+    margin-bottom: 18px;
+}
+
+.home-subtitulo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    color: #7d4b4b;
+    margin-bottom: 30px;
+}
+
+.btn-home-galeria {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    border: 1.5px solid #c77c7c;
+    background-color: transparent;
+    color: #9e4f4f;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-home-galeria:hover {
+    background-color: #ffe4ec;
+    border-color: #9e4f4f;
+    color: #6b3838;
+    transform: translateY(-2px);
+}

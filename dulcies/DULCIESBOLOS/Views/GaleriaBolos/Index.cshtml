@@ -1,8 +1,64 @@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Galeria de Bolos";
+
+    var bolosGaleria = new[]
+    {
+        new {
+            Nome = "Chocolate com cobertura de chocolate",
+            Descricao = "Massa fofinha de cacau com cobertura cremosa de chocolate.",
+            Imagem = "~/images/chocolate.jpg"
+        },
+        new {
+            Nome = "Cenoura com cobertura de chocolate",
+            Descricao = "Clássico caseiro fofinho finalizado com ganache ou brigadeiro de chocolate.",
+            Imagem = "~/images/cenoura-chocolate.jpg"
+        },
+        new {
+            Nome = "Limão com cobertura de limão",
+            Descricao = "Massa leve e aromática com cobertura cítrica e refrescante de limão.",
+            Imagem = "~/images/limao.jpg"
+        },
+        new {
+            Nome = "Ninho e morango",
+            Descricao = "Combinação delicada e cremosa de leite Ninho com morangos frescos.",
+            Imagem = "~/images/ninho-morango.jpg"
+        },
+        new {
+            Nome = "Iogurte com cobertura de ninho",
+            Descricao = "Bolo macio e equilibrado com cobertura suave de leite Ninho.",
+            Imagem = "~/images/iogurte-ninho.jpg"
+        },
+        new {
+            Nome = "Brownie",
+            Descricao = "Textura densa e úmida com sabor intenso de chocolate.",
+            Imagem = "~/images/brownie.jpg"
+        }
+    };
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bolos</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="galeria-header">
+    <h1 class="galeria-titulo">Galeria de Bolos</h1>
+    <p class="galeria-subtitulo">Conheça nossos sabores especiais preparados com carinho.</p>
+</div>
+
+<div class="row g-4">
+    @foreach (var bolo in bolosGaleria)
+    {
+        <div class="col-12 col-md-4">
+            <div class="card-bolo">
+                <div class="card-bolo-img-wrapper">
+                    <img src="@Url.Content(bolo.Imagem)" alt="@bolo.Nome" class="card-bolo-img" />
+                </div>
+                <div class="card-bolo-body">
+                    <div>
+                        <h5 class="card-bolo-titulo">@bolo.Nome</h5>
+                        <p class="card-bolo-desc">@bolo.Descricao</p>
+                    </div>
+                    <a asp-controller="Vendas" asp-action="Index" class="btn-encomendar">
+                        Fazer pedido
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

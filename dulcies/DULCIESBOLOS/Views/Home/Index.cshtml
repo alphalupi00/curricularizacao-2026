@@ -2,7 +2,69 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home-vitrine home-vitrine-full">
+    <div class="row align-items-center w-100 g-4">
+        <div class="col-12 col-lg-6">
+            <div id="carouselHomeBolos" class="carousel slide home-carousel-wrapper" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="home-cake-frame">
+                            <img src="~/images/bolo-home.png" class="home-cake-img" alt="Bolo de chocolate com cobertura e morangos" />
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="home-cake-frame">
+                            <img src="~/images/bolo-cenoura-home.png" class="home-cake-img" alt="Bolo de cenoura com cobertura de chocolate" />
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="home-cake-frame">
+                            <img src="~/images/browniee-home.png" class="home-cake-img" alt="Brownie de chocolate" />
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev home-carousel-btn" type="button" data-bs-target="#carouselHomeBolos" data-bs-slide="prev" aria-label="Anterior">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next home-carousel-btn" type="button" data-bs-target="#carouselHomeBolos" data-bs-slide="next" aria-label="Próximo">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+
+                <div class="carousel-indicators home-carousel-indicators">
+                    <button type="button" data-bs-target="#carouselHomeBolos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselHomeBolos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselHomeBolos" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="col-12 col-lg-6">
+            <div class="home-texto-box">
+                <div class="home-ornamento-topo" aria-hidden="true">
+                    <svg width="170" height="32" viewBox="0 0 170 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                        <path d="M12 22 C45 26, 75 22, 85 14 C89 9, 95 9, 95 14 C95 18, 88 21, 85 23 C82 21, 75 18, 75 14 C75 9, 81 9, 85 14 C95 22, 125 26, 158 20" />
+                    </svg>
+                </div>
+
+                <h1 class="home-titulo">
+                    Um doce<br />momento.
+                </h1>
+
+                <p class="home-subtitulo">
+                    Pequenos detalhes,<br />grandes sabores.
+                </p>
+
+                <a asp-controller="GaleriaBolos" asp-action="Index" class="btn-home-galeria">
+                    <span>Conheça nossos bolos</span>
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/home.js" asp-append-version="true"></script>
+}
