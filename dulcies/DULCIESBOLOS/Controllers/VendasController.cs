@@ -103,24 +103,40 @@ namespace DULCIESBOLOS.Controllers
             }
             venda.UsuarioId = usuarioAtual.Id;
 
-            // Busca acréscimo se selecionado
+            // 1. Busca e valida acréscimo se selecionado
+            Acrescimo? acrescimo = null;
             decimal valorAcrescimo = 0m;
             if (AcrescimoId.HasValue)
             {
-                var acrescimo = await _context.Acrescimo.FindAsync(AcrescimoId.Value);
+                acrescimo = await _context.Acrescimo.FindAsync(AcrescimoId.Value);
                 if (acrescimo != null)
                 {
-                    valorAcrescimo = acrescimo.Valor;
+                    if (acrescimo.Estoque < 1)
+                    {
+                        ModelState.AddModelError("AcrescimoId", "O acréscimo selecionado está esgotado no momento.");
+                    }
+                    else
+                    {
+                        valorAcrescimo = acrescimo.Valor;
+                    }
                 }
             }
 
-            // Busca o bolo selecionado para calcular o valor total com base no preço, quantidade e acréscimo
+            // 2. Busca e valida o bolo selecionado (estoque e cálculo de valor)
+            Bolo? bolo = null;
             if (venda.boloId.HasValue)
             {
-                var bolo = await _context.Bolo.FindAsync(venda.boloId.Value);
+                bolo = await _context.Bolo.FindAsync(venda.boloId.Value);
                 if (bolo != null)
                 {
-                    venda.Valor = ((decimal)bolo.Valor * venda.Quantidade) + valorAcrescimo;
+                    if (bolo.Estoque < venda.Quantidade)
+                    {
+                        ModelState.AddModelError("Quantidade", $"Estoque insuficiente! Temos apenas {bolo.Estoque} unidade(s) deste bolo.");
+                    }
+                    else
+                    {
+                        venda.Valor = ((decimal)bolo.Valor * venda.Quantidade) + valorAcrescimo;
+                    }
                 }
             }
 
@@ -133,8 +149,15 @@ namespace DULCIESBOLOS.Controllers
             ModelState.Remove("Pagamento");
             ModelState.Remove("UsuarioId");
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && bolo != null)
             {
+                // 3. BAIXA NO ESTOQUE AUTOMÁTICA
+                bolo.Estoque -= venda.Quantidade;
+                if (acrescimo != null)
+                {
+                    acrescimo.Estoque -= 1;
+                }
+
                 _context.Add(venda);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

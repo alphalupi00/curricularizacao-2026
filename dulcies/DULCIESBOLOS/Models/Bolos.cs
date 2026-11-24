@@ -26,5 +26,10 @@ namespace DULCIESBOLOS.Models
         [Required(ErrorMessage = "O campo valor é obrigatório")]
         [Range(0.01, 9999.99, ErrorMessage = "O valor deve ser maior que zero")]
         public float Valor { get; set; } = 0;
+
+        [Display(Name = "Estoque: ")]
+        [Required(ErrorMessage = "O campo estoque é obrigatório")]
+        [Range(0, 9999, ErrorMessage = "O estoque não pode ser negativo")]
+        public int Estoque { get; set; } = 10;
     }
 }

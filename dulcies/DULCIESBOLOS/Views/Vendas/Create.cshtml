@@ -58,9 +58,18 @@
                                 <option value="" data-valor="0">-- Nenhum acréscimo --</option>
                                 @foreach (var ac in acrescimosDb)
                                 {
-                                    <option value="@ac.Id" data-valor="@ac.Valor">
-                                        @ac.Descricao (@ac.Quantidade) - R$ @ac.Valor.ToString("N2")
-                                    </option>
+                                    if (ac.Estoque > 0)
+                                    {
+                                        <option value="@ac.Id" data-valor="@ac.Valor">
+                                            @ac.Descricao (@ac.Quantidade) - R$ @ac.Valor.ToString("N2") — (@ac.Estoque em estoque)
+                                        </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@ac.Id" data-valor="@ac.Valor" disabled>
+                                            @ac.Descricao (@ac.Quantidade) - (Esgotado)
+                                        </option>
+                                    }
                                 }
                             </select>
                             <small class="form-text text-muted">Escolha um item extra ou cobertura adicional.</small>
@@ -120,7 +129,8 @@
             id = b.Id,
             sabor = b.Descricao,
             tamanho = b.Tamanho.ToUpper(),
-            valor = b.Valor
+            valor = b.Valor,
+            estoque = b.Estoque
         })));
 
         const selectSabor = document.getElementById('selectSabor');
@@ -188,7 +198,15 @@
                 const opt = document.createElement('option');
                 opt.value = b.id;
                 opt.dataset.valor = b.valor;
-                opt.textContent = `Tamanho ${b.tamanho} (R$ ${b.valor.toFixed(2).replace('.', ',')})`;
+                opt.dataset.estoque = b.estoque;
+
+                if (b.estoque > 0) {
+                    opt.textContent = `Tamanho ${b.tamanho} (R$ ${b.valor.toFixed(2).replace('.', ',')}) — ${b.estoque} em estoque`;
+                } else {
+                    opt.textContent = `Tamanho ${b.tamanho} (R$ ${b.valor.toFixed(2).replace('.', ',')}) — (Esgotado)`;
+                    opt.disabled = true;
+                }
+
                 selectTamanho.appendChild(opt);
             });
 
@@ -199,6 +217,15 @@
         // Quando o cliente escolhe o Tamanho:
         selectTamanho.addEventListener('change', function () {
             boloIdHidden.value = this.value;
+            const opt = this.selectedOptions[0];
+            if (opt && opt.dataset.estoque) {
+                const maxEstoque = parseInt(opt.dataset.estoque, 10);
+                inputQtd.max = maxEstoque;
+                if (parseInt(inputQtd.value, 10) > maxEstoque) {
+                    inputQtd.value = maxEstoque;
+                }
+            }
+
             if (this.value) {
                 tamanhoErro.classList.add('d-none');
             }
@@ -207,7 +234,13 @@
 
         // Quando altera Acréscimo ou Quantidade:
         selectAcrescimo.addEventListener('change', atualizarCalculo);
-        inputQtd.addEventListener('input', atualizarCalculo);
+        inputQtd.addEventListener('input', function () {
+            const max = parseInt(this.max, 10);
+            if (max && parseInt(this.value, 10) > max) {
+                this.value = max;
+            }
+            atualizarCalculo();
+        });
 
         // Validação no envio:
         formPedido.addEventListener('submit', function (e) {

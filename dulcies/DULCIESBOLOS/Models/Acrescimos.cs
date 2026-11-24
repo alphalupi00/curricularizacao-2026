@@ -26,5 +26,10 @@ namespace DULCIESBOLOS.Models{
        [Column(TypeName = "decimal(18,2)")]
        [Required(ErrorMessage = "O campo valor é obrigatório")]
        public decimal Valor { get; set; } = 0;
+
+       [Display(Name = "Estoque: ")]
+       [Required(ErrorMessage = "O campo estoque é obrigatório")]
+       [Range(0, 9999, ErrorMessage = "O estoque não pode ser negativo")]
+       public int Estoque { get; set; } = 20;
     }
 } 

@@ -25,6 +25,7 @@
                         <th class="ps-3">Sabor</th>
                         <th class="text-center">Tamanho</th>
                         <th class="text-center">Valor Unitário</th>
+                        <th class="text-center">Estoque</th>
                         <th class="text-end pe-3">Ações</th>
                     </tr>
                 </thead>
@@ -66,6 +67,9 @@
                                 </td>
                                 <td class="text-center fw-bold text-success">
                                     R$ @item.Valor.ToString("F2")
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge @(item.Estoque > 0 ? "bg-success" : "bg-danger") px-2 py-1">@item.Estoque un</span>
                                 </td>
                                 <td class="text-end pe-3">
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1">Editar</a>

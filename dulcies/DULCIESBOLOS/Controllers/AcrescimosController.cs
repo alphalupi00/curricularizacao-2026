@@ -56,7 +56,7 @@ namespace DULCIESBOLOS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descricao,Quantidade,Valor")] Acrescimo acrescimo)
+        public async Task<IActionResult> Create([Bind("Id,Descricao,Quantidade,Valor,Estoque")] Acrescimo acrescimo)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace DULCIESBOLOS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao,Quantidade,Valor")] Acrescimo acrescimo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao,Quantidade,Valor,Estoque")] Acrescimo acrescimo)
         {
             if (id != acrescimo.Id)
             {
