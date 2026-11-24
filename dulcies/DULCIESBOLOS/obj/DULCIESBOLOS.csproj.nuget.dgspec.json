@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj": {}
+    "C:\\Users\\thovaguh\\Downloads\\curricularizacao-2026\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj": {
+    "C:\\Users\\thovaguh\\Downloads\\curricularizacao-2026\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj",
+        "projectUniqueName": "C:\\Users\\thovaguh\\Downloads\\curricularizacao-2026\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj",
         "projectName": "DULCIESBOLOS",
-        "projectPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj",
-        "packagesPath": "C:\\Users\\sarah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sarah\\OneDrive\\Área de Trabalho\\curricularizaçao\\dulcies\\DULCIESBOLOS\\obj\\",
+        "projectPath": "C:\\Users\\thovaguh\\Downloads\\curricularizacao-2026\\dulcies\\DULCIESBOLOS\\DULCIESBOLOS.csproj",
+        "packagesPath": "C:\\Users\\thovaguh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thovaguh\\Downloads\\curricularizacao-2026\\dulcies\\DULCIESBOLOS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sarah\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\thovaguh\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
