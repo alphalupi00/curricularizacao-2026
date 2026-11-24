@@ -1,0 +1,35 @@
+@model List<DULCIESBOLOS.Models.ViewModel.AgrupaFormaPag>
+
+@{
+    ViewData["Title"] = "Vendas por Forma de Pagamento";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h2 class="mb-1" style="color: #333;">💰 Total de vendas por Forma de Pagamento</h2>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Forma de Pagamento</th>
+                        <th>Nº de Vendas</th>
+                        <th>Total Arrecadado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FormaPagamento</td>
+                            <td>@item.NumeroVendas</td>
+                            <td>@item.TotalArrecadado.ToString("C2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
