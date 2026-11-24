@@ -2,45 +2,83 @@
     ViewData["Title"] = "Entrar";
 }
 
-<div class="row justify-content-center mt-5 mb-5">
-    <div class="col-md-5 col-lg-4">
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-                <h2 class="text-center mb-4">Entrar no Sistema</h2>
+<div class="dulcies-login-page">
+    <div class="dulcies-login-wrap">
 
-                <form asp-action="Login" method="post">
-                    <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
-                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+        <section class="dulcies-hero-card">
+            <div class="dulcies-hero-inner">
+                <div class="dulcies-hero-kicker">— Confeitaria —</div>
+                <div class="dulcies-badge-db">DB</div>
+                <h1 class="dulcies-hero-title">Dulcies Bolos</h1>
+                <div class="dulcies-hero-divider">
+                    <span class="line"></span>
+                    <span>◆</span>
+                    <span class="line"></span>
+                </div>
+                <p class="dulcies-hero-subtitle">
+                    Doçura artesanal, receitas de família e<br />
+                    momentos inesquecíveis.
+                </p>
+                <div class="dulcies-hero-footer">Desde 2026 • Boleria</div>
+            </div>
+        </section>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="exemplo@dominio.com" required />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="senha" class="form-label">Senha</label>
-                        <input type="password" name="senha" id="senha" class="form-control" placeholder="digite sua senha" required />
-                    </div>
-
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" name="lembrarMe" id="lembrarMe" value="true" class="form-check-input" />
-                        <label for="lembrarMe" class="form-check-label">Lembrar-me</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Entrar</button>
-
-                    <div class="text-center mb-3">
-                        <span class="text-muted">É um cliente novo? </span>
-                        <a asp-action="Registro" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none">Criar conta</a>
-                    </div>
-                </form>
-
-                <div class="alert alert-light border mt-3 mb-0 small">
-                    <strong class="d-block mb-1">Contas de acesso:</strong>
-                    <div>👑 <strong>Admin:</strong> admin@dulciesbolos.com / <code>Admin@123</code></div>
-                    <div>👤 <strong>Cliente:</strong> cliente@dulciesbolos.com / <code>Cliente@123</code></div>
+        
+        <section id="area-login" class="dulcies-auth-card">
+            <div class="dulcies-auth-topbar">
+                <span>Acesso ao Portal</span>
+                <div class="dulcies-auth-tabs d-flex gap-3">
+                    <a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="active-tab">Entrar</a>
+                    <span>|</span>
+                    <a asp-action="Registro" asp-route-returnUrl="@ViewData["ReturnUrl"]">Cadastrar</a>
                 </div>
             </div>
-        </div>
+
+            <h2 class="dulcies-auth-heading">Bem-vindo(a) de volta</h2>
+            <p class="dulcies-auth-sub">Insira suas credenciais para acompanhar seus pedidos de bolos.</p>
+
+            <form asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label dulcies-label">Login ou E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control dulcies-input" placeholder="seuemail@exemplo.com.br" required />
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="senha" class="form-label dulcies-label mb-0">Senha</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="senha" id="senha" class="form-control dulcies-input" placeholder="••••••••••" required />
+                        <button type="button" class="btn btn-outline-secondary dulcies-toggle-senha" id="toggleSenhaBtn">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="mb-4 form-check">
+                    <input type="checkbox" name="lembrarMe" id="lembrarMe" value="true" class="form-check-input" />
+                    <label for="lembrarMe" class="form-check-label small text-muted">Manter conectado</label>
+                </div>
+
+                <button type="submit" class="dulcies-btn-entrar mb-3">Entrar</button>
+
+                <div class="text-center mb-3">
+                    <span class="text-muted small">Ainda não tem conta? </span>
+                    <a asp-action="Registro" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none small dulcies-link-cadastro">Cadastrar</a>
+                </div>
+            </form>
+
+            <div class="alert alert-light border mt-3 mb-0 small">
+                <strong class="d-block mb-1">Contas de acesso:</strong>
+                <div><strong>Admin:</strong> admin@dulciesbolos.com / <code>Admin@123</code></div>
+                <div><strong>Cliente:</strong> cliente@dulciesbolos.com / <code>Cliente@123</code></div>
+            </div>
+        </section>
+
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/login.js" asp-append-version="true"></script>
+}

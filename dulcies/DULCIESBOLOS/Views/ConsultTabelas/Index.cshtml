@@ -1,0 +1,45 @@
+@model IEnumerable<DULCIESBOLOS.Models.ConsultTabelas>
+
+@{
+    ViewData["Title"] = "Consultas";
+}
+
+<div class="dulcies-consulta-page">
+    <div class="dulcies-consulta-card">
+        <div class="dulcies-consulta-header">
+            <span class="dulcies-consulta-kicker">Dulcies Bolos • Consulta de tabelas </span>
+            <h1 class="dulcies-consulta-title">Consulta de Vendas por Sabor</h1>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table dulcies-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Sabor do Bolo</th>
+                        <th>Quantidade Vendida</th>
+                        <th>Faturamento Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Sabor</td>
+                            <td>@item.QuantidadeVendida</td>
+                            <td>@item.FaturamentoTotal.ToString("C")</td>
+                        </tr>
+                    }
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>@Model.Sum(item => item.QuantidadeVendida)</th>
+                        <th>@Model.Sum(item => item.FaturamentoTotal).ToString("C")</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

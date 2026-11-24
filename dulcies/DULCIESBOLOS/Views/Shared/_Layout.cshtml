@@ -1,3 +1,17 @@
+@{
+    var controllerAtual = ViewContext.RouteData.Values["controller"]?.ToString();
+    var actionAtual = ViewContext.RouteData.Values["action"]?.ToString();
+    var tituloPagina = ViewData["Title"]?.ToString();
+
+    var isLoginPage =
+        (string.Equals(controllerAtual, "Conta", StringComparison.OrdinalIgnoreCase) &&
+         (string.Equals(actionAtual, "Login", StringComparison.OrdinalIgnoreCase) ||
+          string.Equals(actionAtual, "Registro", StringComparison.OrdinalIgnoreCase)))
+        || string.Equals(tituloPagina, "Entrar", StringComparison.OrdinalIgnoreCase)
+        || string.Equals(tituloPagina, "Criar Conta de Cliente", StringComparison.OrdinalIgnoreCase);
+}
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,72 +25,78 @@
    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 1px; background-color: black; z-index: 1001;">
    </div>
 
-    <nav class="text-white p-3 menu" style="background-color: #ffe4eC; border: 1px solid black; box-sizing: border-box; position: fixed; top: 0; bottom: 0; left: 0; width: 250px; height: 100vh; z-index: 1000; display: flex; flex-direction: column;">
-        <h4 class="mb-2" style="color: black;">DULCIES BOLOS</h4>
-        <p class="linha" style="border-bottom: 1px solid black;"></p>
-        
-        <ul class="nav flex-column flex-grow-1">
-            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Home" asp-action="Index">🏠 Home</a></li>
-            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="GaleriaBolos" asp-action="Index">🎂 Galeria</a></li>
-            <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Vendas" asp-action="Index">🛍️ Pedidos</a></li>
+    @if (!isLoginPage)
+    {
+        <nav class="text-white p-3 menu" style="background-color: #ffe4eC; border: 1px solid black; box-sizing: border-box; position: fixed; top: 0; bottom: 0; left: 0; width: 250px; height: 100vh; z-index: 1000; display: flex; flex-direction: column;">
+            <h4 class="mb-2" style="color: black;">DULCIES BOLOS</h4>
+            <p class="linha" style="border-bottom: 1px solid black;"></p>
             
-
-          @if (User.IsInRole("Admin"))
-            {
-                <li class="nav-item mb-1 text-muted small text-uppercase fw-bold px-3 pt-2">Administração</li>
+            <ul class="nav flex-column flex-grow-1">
+                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Home" asp-action="Index">🏠 Home</a></li>
+                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="GaleriaBolos" asp-action="Index">🎂 Galeria</a></li>
+                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Vendas" asp-action="Index">🛍️ Pedidos</a></li>
                 
-                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Bolos" asp-action="Index">🍰 Bolos</a></li>
-                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Acrescimos" asp-action="Index">✨ Acréscimos</a></li>
-                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Pagamentos" asp-action="Index">💳 Pagamentos</a></li>
-                <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="AgruparBolo" asp-action="Pivot">📊 Agrupamento (Pivot)</a></li>
-            }
-        </ul>
 
-        <!-- Painel de Conta / Segurança (Admin e Cliente) -->
-        <div class="pt-3 border-top border-dark mt-auto mb-2">
-            @if (User.Identity?.IsAuthenticated == true)
-            {
-                <div class="mb-2">
-                    <span class="d-block small text-muted">Conectado como:</span>
-                    <strong class="text-dark small d-block text-truncate" title="@User.Identity.Name">@User.Identity.Name</strong>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <span class="badge bg-danger mt-1">👑 Administrador</span>
-                    }
-                    else if (User.IsInRole("Cliente"))
-                    {
-                        <span class="badge bg-primary mt-1">👤 Cliente</span>
-                    }
-                </div>
-                <form asp-controller="Conta" asp-action="Logout" method="post" class="d-inline">
-                    <button type="submit" class="btn btn-outline-dark btn-sm w-100">Sair</button>
-                </form>
-            }
-            else
-            {
-                <div class="d-grid gap-2">
-                    <a class="btn btn-dark btn-sm" asp-controller="Conta" asp-action="Login">Entrar</a>
-                    <a class="btn btn-outline-dark btn-sm" asp-controller="Conta" asp-action="Registro">Cadastrar</a>
-                </div>
-            }
-        </div>
-    </nav>
+              @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item mb-1 text-muted small text-uppercase fw-bold px-3 pt-2">Administração</li>
+                    
+                    <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Bolos" asp-action="Index">🍰 Bolos</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Acrescimos" asp-action="Index">✨ Acréscimos</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="Pagamentos" asp-action="Index">💳 Pagamentos</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="AgruparBolo" asp-action="Pivot">📊 Agrupamento (Pivot)</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link text-black" asp-controller="ConsultTabelas" asp-action="Index">📊 Consulta Tabelas</a></li>
+                }
+            </ul>
 
+            <!-- Painel de Conta / Segurança (Admin e Cliente) -->
+            <div class="pt-3 border-top border-dark mt-auto mb-2">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <div class="mb-2">
+                        <span class="d-block small text-muted">Conectado como:</span>
+                        <strong class="text-dark small d-block text-truncate" title="@User.Identity.Name">@User.Identity.Name</strong>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span class="badge bg-danger mt-1">👑 Administrador</span>
+                        }
+                        else if (User.IsInRole("Cliente"))
+                        {
+                            <span class="badge bg-primary mt-1">👤 Cliente</span>
+                        }
+                    </div>
+                    <form asp-controller="Conta" asp-action="Logout" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-outline-dark btn-sm w-100">Sair</button>
+                    </form>
+                }
+                else
+                {
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-dark btn-sm" asp-controller="Conta" asp-action="Login">Entrar</a>
+                        <a class="btn btn-outline-dark btn-sm" asp-controller="Conta" asp-action="Registro">Cadastrar</a>
+                    </div>
+                }
+            </div>
+        </nav>
+    }
 
-    <div style="margin-left: 240px; min-height: 100vh; display: flex; flex-direction: column;">
+    <div style="@(isLoginPage ? "margin-left: 0;" : "margin-left: 240px;") min-height: 100vh; display: flex; flex-direction: column;">
     
-    <div class="container flex-grow-1" style="padding-top: 30px; padding-bottom: 70px;">
-        <main role="main" class="pb-3">
+    <div class="@(isLoginPage ? "container-fluid px-0 flex-grow-1" : "container flex-grow-1")" style="@(isLoginPage ? "padding-top: 0; padding-bottom: 0;" : "padding-top: 30px; padding-bottom: 70px;")">
+        <main role="main" class="@(isLoginPage ? "" : "pb-3")">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="py-3 border-top" style="background-color: #f8f9fa; position: fixed; bottom: 0; left: 250px; right: 0; z-index: 999;">
-        <div class="container text-center">
-            <span class="text-dark small">&copy; @DateTime.Now.Year - DULCIES BOLOS</span>
-            <br />
-        </div>
-    </footer>
+    @if (!isLoginPage)
+    {
+        <footer class="py-3 border-top" style="background-color: #f8f9fa; position: fixed; bottom: 0; left: 250px; right: 0; z-index: 999;">
+            <div class="container text-center">
+                <span class="text-dark small">&copy; @DateTime.Now.Year - DULCIES BOLOS</span>
+                <br />
+            </div>
+        </footer>
+    }
 
     </div>
 

@@ -3,64 +3,93 @@
     ViewData["Title"] = "Criar Conta de Cliente";
 }
 
-<div class="row justify-content-center mt-4 mb-5">
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-                <h2 class="text-center mb-3">Cadastro de Cliente</h2>
-                <p class="text-muted text-center small mb-4">Crie sua conta de cliente para realizar pedidos na Dulcies Bolos</p>
+<div class="dulcies-login-page">
+    <div class="dulcies-login-wrap">
 
-                <form asp-action="Registro" method="post">
-                    <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
-                    <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
-
-                    <div class="mb-3">
-                        <label asp-for="NomeCompleto" class="form-label"></label>
-                        <input asp-for="NomeCompleto" class="form-control" placeholder="Seu nome completo" required />
-                        <span asp-validation-for="NomeCompleto" class="text-danger small"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" type="email" class="form-control" placeholder="seu@email.com" required />
-                        <span asp-validation-for="Email" class="text-danger small"></span>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="Telefone" class="form-label"></label>
-                            <input asp-for="Telefone" class="form-control" placeholder="(11) 99999-9999" />
-                            <span asp-validation-for="Telefone" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="Endereco" class="form-label"></label>
-                            <input asp-for="Endereco" class="form-control" placeholder="Rua, número, bairro" />
-                            <span asp-validation-for="Endereco" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label asp-for="Senha" class="form-label"></label>
-                            <input asp-for="Senha" type="password" class="form-control" placeholder="Mínimo 6 caracteres" required />
-                            <span asp-validation-for="Senha" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label asp-for="ConfirmarSenha" class="form-label"></label>
-                            <input asp-for="ConfirmarSenha" type="password" class="form-control" placeholder="Repita a senha" required />
-                            <span asp-validation-for="ConfirmarSenha" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Cadastrar e Entrar</button>
-
-                    <div class="text-center">
-                        <span class="text-muted">Já tem uma conta? </span>
-                        <a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none">Entrar</a>
-                    </div>
-                </form>
+      
+        <section class="dulcies-hero-card">
+            <div class="dulcies-hero-inner">
+                <div class="dulcies-hero-kicker">— Confeitaria —</div>
+                <div class="dulcies-badge-db">DB</div>
+                <h1 class="dulcies-hero-title">Dulcies Bolos</h1>
+                <div class="dulcies-hero-divider">
+                    <span class="line"></span>
+                    <span>◆</span>
+                    <span class="line"></span>
+                </div>
+                <p class="dulcies-hero-subtitle">
+                    Doçura artesanal, receitas de família e<br />
+                    momentos inesquecíveis.
+                </p>
+                <div class="dulcies-hero-footer">Desde 2026 • Boleria</div>
             </div>
-        </div>
+        </section>
+
+    
+        <section id="area-registro" class="dulcies-auth-card">
+            <div class="dulcies-auth-topbar">
+                <span>Acesso ao Portal</span>
+                <div class="dulcies-auth-tabs d-flex gap-3">
+                    <a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]">Entrar</a>
+                    <span>|</span>
+                    <a asp-action="Registro" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="active-tab">Cadastrar</a>
+                </div>
+            </div>
+
+            <h2 class="dulcies-auth-heading">Cadastro de Cliente</h2>
+            <p class="dulcies-auth-sub">Crie sua conta de cliente para realizar pedidos de bolos na Dulcies Bolos</p>
+
+            <form asp-action="Registro" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2" role="alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="NomeCompleto" class="form-label dulcies-label"></label>
+                    <input asp-for="NomeCompleto" class="form-control dulcies-input" placeholder="Seu nome completo" required />
+                    <span asp-validation-for="NomeCompleto" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label dulcies-label"></label>
+                    <input asp-for="Email" type="email" class="form-control dulcies-input" placeholder="seu@email.com" required />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Telefone" class="form-label dulcies-label"></label>
+                        <input asp-for="Telefone" class="form-control dulcies-input" placeholder="(11) 99999-9999" />
+                        <span asp-validation-for="Telefone" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Endereco" class="form-label dulcies-label"></label>
+                        <input asp-for="Endereco" class="form-control dulcies-input" placeholder="Rua, número, bairro" />
+                        <span asp-validation-for="Endereco" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Senha" class="form-label dulcies-label"></label>
+                        <input asp-for="Senha" type="password" class="form-control dulcies-input" placeholder="Mínimo 6 caracteres" required />
+                        <span asp-validation-for="Senha" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="ConfirmarSenha" class="form-label dulcies-label"></label>
+                        <input asp-for="ConfirmarSenha" type="password" class="form-control dulcies-input" placeholder="Repita a senha" required />
+                        <span asp-validation-for="ConfirmarSenha" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="dulcies-btn-entrar mb-3">Cadastrar e Entrar</button>
+
+                <div class="text-center">
+                    <span class="text-muted small">Já tem uma conta? </span>
+                    <a asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="fw-semibold text-decoration-none small dulcies-link-cadastro">Entrar</a>
+                </div>
+            </form>
+        </section>
+
     </div>
 </div>
 

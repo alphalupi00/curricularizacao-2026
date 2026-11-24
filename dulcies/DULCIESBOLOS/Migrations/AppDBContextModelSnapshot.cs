@@ -35,6 +35,9 @@ namespace DULCIESBOLOS.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("Estoque")
+                        .HasColumnType("int");
+
                     b.Property<string>("Quantidade")
                         .IsRequired()
                         .HasMaxLength(5)
@@ -60,6 +63,9 @@ namespace DULCIESBOLOS.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Estoque")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tamanho")
                         .IsRequired()

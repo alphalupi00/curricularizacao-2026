@@ -36,6 +36,203 @@ body {
 
 
 
+/* Login */
+.dulcies-login-page {
+    background-color: #fcf3f1;
+    min-height: 100vh;
+    padding: 28px 16px 60px 16px;
+    color: #2b2120;
+}
+
+.dulcies-login-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho/banner superior */
+.dulcies-hero-card {
+    background-color: #e6c6c4;
+    border: 1px solid #d5b2af;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 24px;
+}
+
+.dulcies-hero-inner {
+    border: 1px solid rgba(138, 79, 82, 0.35);
+    border-radius: 6px;
+    padding: 34px 24px;
+    text-align: center;
+}
+
+.dulcies-hero-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7c5658;
+    margin-bottom: 16px;
+}
+
+.dulcies-badge-db {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 14px auto;
+    border-radius: 50%;
+    background-color: #fbf4f2;
+    border: 1px solid #c79f78;
+    outline: 1px dashed rgba(138, 79, 82, 0.45);
+    outline-offset: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    color: #7d3e43;
+}
+
+.dulcies-hero-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.3rem;
+    color: #1f1919;
+    margin-bottom: 8px;
+}
+
+.dulcies-hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #9e6b6e;
+    margin: 10px auto 14px auto;
+    max-width: 180px;
+    font-size: 0.7rem;
+}
+
+.dulcies-hero-divider span.line {
+    flex: 1;
+    height: 1px;
+    background-color: rgba(138, 79, 82, 0.4);
+}
+
+.dulcies-hero-subtitle {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #5c4647;
+    margin-bottom: 18px;
+}
+
+.dulcies-hero-footer {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7c5658;
+}
+
+/* Card de login logo abaixo ao rolar */
+.dulcies-auth-card {
+    background-color: #fdf9f8;
+    border: 1px solid #e6d6d3;
+    border-radius: 10px;
+    padding: 30px 34px;
+    box-shadow: 0 8px 24px rgba(80, 45, 48, 0.05);
+}
+
+.dulcies-auth-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eadad7;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #7a6867;
+}
+
+.dulcies-auth-tabs a {
+    text-decoration: none;
+    color: #7a6867;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.92rem;
+    padding-bottom: 4px;
+}
+
+.dulcies-auth-tabs a.active-tab {
+    color: #7d3e43;
+    font-weight: 600;
+    border-bottom: 2px solid #7d3e43;
+}
+
+.dulcies-auth-heading {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.85rem;
+    color: #1f1919;
+    margin-bottom: 4px;
+}
+
+.dulcies-auth-sub {
+    font-size: 0.9rem;
+    color: #756564;
+    margin-bottom: 22px;
+}
+
+.dulcies-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5f504f;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.dulcies-input {
+    border: 1px solid #dfd0cd;
+    border-radius: 6px;
+    padding: 10px 14px;
+    background-color: #ffffff;
+}
+
+.dulcies-input:focus {
+    border-color: #8a4f52;
+    box-shadow: 0 0 0 0.15rem rgba(138, 79, 82, 0.15);
+}
+
+.dulcies-toggle-senha {
+    border-color: #dfd0cd;
+    font-size: 0.85rem;
+}
+
+.dulcies-btn-entrar {
+    background-color: #824347;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+}
+
+.dulcies-btn-entrar:hover {
+    background-color: #6b3538;
+    color: #ffffff;
+}
+
+.dulcies-link-cadastro {
+    color: #7d3e43;
+}
+
+
+
+
+
+
+
 /* Bordado no menu */
 nav.menu::after {
     content: "";
@@ -343,4 +540,79 @@ nav.menu::after {
     border-color: #9e4f4f;
     color: #6b3838;
     transform: translateY(-2px);
+}
+
+
+
+/* Consultar tabelas */
+
+.dulcies-consulta-page {
+    background-color: #fcf3f1;
+    padding: 8px 0 24px 0;
+    color: #1f1919;
+}
+
+.dulcies-consulta-card {
+    background-color: #fdf9f8;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 24px 28px;
+}
+
+.dulcies-consulta-header {
+    border-bottom: 1px solid #000000;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+}
+
+.dulcies-consulta-kicker {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7c5658;
+    margin-bottom: 4px;
+}
+
+.dulcies-consulta-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.8rem;
+    color: #1f1919;
+    margin: 0;
+}
+
+.dulcies-table {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+.dulcies-table thead th {
+    background-color: #ffe4ec;
+    color: #000000;
+    border-color: #000000;
+    font-weight: 600;
+    padding: 12px 14px;
+}
+
+.dulcies-table tbody td {
+    border-color: #000000;
+    color: #1f1919;
+    padding: 10px 14px;
+}
+
+.dulcies-table tbody tr:nth-child(even) {
+    background-color: #fcf3f1;
+}
+
+.dulcies-table tbody tr:hover {
+    background-color: #f7e6ea;
+}
+
+.dulcies-table tfoot th {
+    background-color: #e6c6c4;
+    color: #000000;
+    border-color: #000000;
+    border-top: 2px solid #000000;
+    font-weight: 700;
+    padding: 12px 14px;
 }
