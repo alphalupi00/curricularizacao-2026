@@ -4,63 +4,64 @@
     ViewData["Title"] = "Relatório: Vendas por Sabor x Mês";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-    <div>
-        <h2 class="mb-1" style="color: #333;">📊 Relatório: Vendas por Sabor x Mês</h2>
-        <p class="text-muted mb-0">
-            Acompanhamento mensal da quantidade vendida de cada sabor e tamanho de bolo ao longo do tempo.
-        </p>
-    </div>
-    <div>
-        <button type="button" class="btn btn-outline-secondary btn-sm px-3" onclick="window.print()">
-            🖨️ Imprimir Relatório
-        </button>
-    </div>
-</div>
-
-@* os tres cards *@
-<div class="row g-3 mb-4">
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0" style="background-color: #fff0f5; border-left: 4px solid #198754 !important;">
-            <div class="card-body py-3">
-                <span class="text-muted small">Faturamento Total Acumulado</span>
-                <h4 class="mb-0 text-success fw-bold">@Model.ValorGeralTotalFormatado</h4>
+<div class="dulcies-consulta-page">
+    <div class="dulcies-consulta-card">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2 dulcies-consulta-header">
+            <div>
+                <span class="dulcies-consulta-kicker">Dulcies Bolos • Relatório</span>
+                <h2 class="mb-1" style="color: #1f1919;">Relatório: Vendas por Sabor x Mês</h2>
+                <p class="mb-0" style="color: #7c5658;">
+                    Acompanhamento mensal da quantidade vendida de cada sabor e tamanho de bolo ao longo do tempo.
+                </p>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-dark btn-sm px-3" onclick="window.print()">
+                    🖨️ Imprimir Relatório
+                </button>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0" style="background-color: #fff0f5; border-left: 4px solid #0d6efd !important;">
-            <div class="card-body py-3">
-                <span class="text-muted small">Total Geral de Bolos Vendidos</span>
-                <h4 class="mb-0 text-dark fw-bold">@Model.QuantidadeGeralTotalFormatada</h4>
+        @* os tres cards *@
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card" style="background-color: #ffe4ec; border: 1px solid #000000; border-radius: 8px;">
+                    <div class="card-body py-3">
+                        <span class="small" style="color: #7c5658;">Faturamento Total Acumulado</span>
+                        <h4 class="mb-0 fw-bold" style="color: #1f1919;">@Model.ValorGeralTotalFormatado</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" style="background-color: #fcf3f1; border: 1px solid #000000; border-radius: 8px;">
+                    <div class="card-body py-3">
+                        <span class="small" style="color: #7c5658;">Total Geral de Bolos Vendidos</span>
+                        <h4 class="mb-0 fw-bold" style="color: #1f1919;">@Model.QuantidadeGeralTotalFormatada</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" style="background-color: #ffe4ec; border: 1px solid #000000; border-radius: 8px;">
+                    <div class="card-body py-3">
+                        <span class="small" style="color: #7c5658;">Variedade no Cardápio</span>
+                        <h4 class="mb-0 fw-bold" style="color: #1f1919;">@Model.Linhas.Count opções</h4>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="card shadow-sm border-0" style="background-color: #fff0f5; border-left: 4px solid #d63384 !important;">
-            <div class="card-body py-3">
-                <span class="text-muted small">Variedade no Cardápio</span>
-                <h4 class="mb-0 text-dark fw-bold">@Model.Linhas.Count opções</h4>
+        @if (!Model.Linhas.Any())
+        {
+            <div class="alert" style="background-color: #fcf3f1; border: 1px solid #000000; color: #1f1919;" role="alert">
+                ℹ️ <strong>Nenhum bolo cadastrado:</strong> Cadastre sabores no <a asp-controller="Bolos" asp-action="Create" class="fw-semibold" style="color: #1f1919;">Cardápio de Bolos</a> para montar o relatório.
             </div>
-        </div>
-    </div>
-</div>
-
-@if (!Model.Linhas.Any())
-{
-    <div class="alert alert-info shadow-sm" role="alert">
-        ℹ️ <strong>Nenhum bolo cadastrado:</strong> Cadastre sabores no <a asp-controller="Bolos" asp-action="Create" class="alert-link">Cardápio de Bolos</a> para montar o relatório.
-    </div>
-}
-else
-{
-    <div class="card shadow-sm border-0">
-        <div class="card-body p-0">
+        }
+        else
+        {
             <div class="table-responsive">
-                <table class="table table-hover table-bordered mb-0 align-middle">
-                    <thead class="table-dark text-center align-middle">
+                <table class="table table-hover dulcies-table mb-0 align-middle">
+                    <thead class="text-center align-middle">
                         <tr>
                             <th class="text-start ps-3" style="min-width: 220px;">Sabor do Bolo</th>
                             <th style="min-width: 90px;">Tamanho</th>
@@ -71,8 +72,8 @@ else
                                     @col.NomeMesFormatado
                                 </th>
                             }
-                            <th class="bg-secondary text-white" style="min-width: 120px;">Total Vendido</th>
-                            <th class="bg-success text-white" style="min-width: 130px;">Faturamento (R$)</th>
+                            <th style="min-width: 120px; background-color: #f3d5de;">Total Vendido</th>
+                            <th style="min-width: 130px; background-color: #e6c6c4;">Faturamento (R$)</th>
                         </tr>
                     </thead>
 
@@ -96,21 +97,21 @@ else
                                     <span class="badge @tamanhoBadge px-2 py-1">@linha.Tamanho</span>
                                 </td>
 
-                                <td class="text-center text-muted">
+                                <td class="text-center" style="color: #7c5658;">
                                     R$ @linha.PrecoUnitario.ToString("F2")
                                 </td>
 
                                 @foreach (var col in Model.ColunasMeses)
                                 {
-                                    var valor = linha.VendasPorMes.ContainsKey(col.Chave) 
-                                        ? linha.VendasPorMes[col.Chave] 
+                                    var valor = linha.VendasPorMes.ContainsKey(col.Chave)
+                                        ? linha.VendasPorMes[col.Chave]
                                         : "-";
                                     var temVenda = valor != "-";
 
-                                    <td class="text-center @(temVenda ? "fw-bold text-dark table-light" : "text-muted")">
+                                    <td class="text-center @(temVenda ? "fw-bold" : "")" style="@(temVenda ? "color: #1f1919;" : "color: #7c5658;")">
                                         @if (temVenda)
                                         {
-                                            <span class="badge bg-light text-dark border px-2 py-1">@valor</span>
+                                            <span class="badge text-dark border px-2 py-1" style="background-color: #fcf3f1; border-color: #000000 !important;">@valor</span>
                                         }
                                         else
                                         {
@@ -120,12 +121,12 @@ else
                                 }
 
                                 <!-- Total de unidades vendidas desse sabor -->
-                                <td class="text-center fw-bold table-secondary">
+                                <td class="text-center fw-bold" style="background-color: #fcf3f1; color: #1f1919;">
                                     @linha.TotalQuantidadeFormatada
                                 </td>
 
                                 <!-- Total em R$ desse sabor -->
-                                <td class="text-center fw-bold table-success text-success">
+                                <td class="text-center fw-bold" style="background-color: #ffe4ec; color: #1f1919;">
                                     @linha.TotalValorFormatado
                                 </td>
                             </tr>
@@ -134,9 +135,9 @@ else
 
                 </table>
             </div>
-        </div>
+        }
     </div>
-}
+</div>
 
 <style>
     @@media print {

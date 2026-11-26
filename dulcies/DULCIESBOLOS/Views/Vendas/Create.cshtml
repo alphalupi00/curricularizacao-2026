@@ -8,28 +8,30 @@
     var acrescimosDb = DbContext.Acrescimo.OrderBy(a => a.Descricao).ToList();
 }
 
-<div class="container py-3">
+<div class="dulcies-consulta-page">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-7">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-white border-bottom py-3">
-                    <h3 class="card-title mb-0" style="color: #333;">🛍️ Fazer Pedido</h3>
+            <div class="dulcies-consulta-card">
+                <div class="dulcies-consulta-header">
+                    <span class="dulcies-consulta-kicker">Dulcies Bolos • Pedidos</span>
+                    <h3 class="dulcies-consulta-title mb-0">Fazer Pedido</h3>
                 </div>
-                <div class="card-body p-4">
+
+                <div>
                     <form asp-action="Create" id="formPedido">
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
                         <!-- Cliente Identificado -->
                         <div class="form-group mb-3">
-                            <label class="form-label fw-semibold">Cliente</label>
-                            <input type="text" class="form-control bg-light" value="@(User.Identity?.Name ?? "Usuário Atual")" readonly disabled />
-                            <small class="form-text text-muted">O pedido será registrado para sua conta.</small>
+                            <label class="form-label fw-semibold" style="color: #1f1919;">Cliente</label>
+                            <input type="text" class="form-control" style="background-color: #fcf3f1; border: 1px solid #000000; color: #1f1919;" value="@(User.Identity?.Name ?? "Usuário Atual")" readonly disabled />
+                            <small class="form-text" style="color: #7c5658;">O pedido será registrado para sua conta.</small>
                         </div>
 
                         <!-- SELEÇÃO 1: Sabor do Bolo -->
                         <div class="form-group mb-3">
-                            <label for="selectSabor" class="form-label fw-semibold">🍰 1. Escolha o Bolo (Sabor)</label>
-                            <select id="selectSabor" class="form-select">
+                            <label for="selectSabor" class="form-label fw-semibold" style="color: #1f1919;"> 1. Escolha o Bolo (Sabor)</label>
+                            <select id="selectSabor" class="form-select" style="background-color: #ffffff; border: 1px solid #000000; color: #1f1919;">
                                 <option value="">-- Selecione o Sabor do Bolo --</option>
                                 @foreach (var sabor in sabores)
                                 {
@@ -40,8 +42,8 @@
 
                         <!-- SELEÇÃO 2: Tamanho do Bolo (P, M ou G) -->
                         <div class="form-group mb-3">
-                            <label for="selectTamanho" class="form-label fw-semibold">📏 2. Escolha o Tamanho</label>
-                            <select id="selectTamanho" class="form-select" disabled>
+                            <label for="selectTamanho" class="form-label fw-semibold" style="color: #1f1919;"> 2. Escolha o Tamanho</label>
+                            <select id="selectTamanho" class="form-select" style="background-color: #ffffff; border: 1px solid #000000; color: #1f1919;" disabled>
                                 <option value="">-- Primeiro selecione o sabor acima --</option>
                             </select>
                             <span id="tamanhoErro" class="text-danger small d-none">Por favor, selecione o tamanho do bolo.</span>
@@ -53,8 +55,8 @@
 
                         <!-- SELEÇÃO 3: Acréscimo / Adicional (Opcional) -->
                         <div class="form-group mb-3">
-                            <label for="selectAcrescimo" class="form-label fw-semibold">✨ 3. Acréscimo / Adicional (Opcional)</label>
-                            <select name="AcrescimoId" id="selectAcrescimo" class="form-select">
+                            <label for="selectAcrescimo" class="form-label fw-semibold" style="color: #1f1919;"> 3. Acréscimo / Adicional (Opcional)</label>
+                            <select name="AcrescimoId" id="selectAcrescimo" class="form-select" style="background-color: #ffffff; border: 1px solid #000000; color: #1f1919;">
                                 <option value="" data-valor="0">-- Nenhum acréscimo --</option>
                                 @foreach (var ac in acrescimosDb)
                                 {
@@ -72,46 +74,46 @@
                                     }
                                 }
                             </select>
-                            <small class="form-text text-muted">Escolha um item extra ou cobertura adicional.</small>
+                            <small class="form-text" style="color: #7c5658;">Escolha um item extra ou cobertura adicional.</small>
                         </div>
 
                         <!-- Quantidade -->
                         <div class="form-group mb-3">
-                            <label asp-for="Quantidade" class="form-label fw-semibold">🔢 Quantidade</label>
-                            <input asp-for="Quantidade" id="inputQuantidade" class="form-control" type="number" min="1" max="20" value="1" />
+                            <label asp-for="Quantidade" class="form-label fw-semibold" style="color: #1f1919;"> Quantidade</label>
+                            <input asp-for="Quantidade" id="inputQuantidade" class="form-control" style="background-color: #ffffff; border: 1px solid #000000; color: #1f1919;" type="number" min="1" max="20" value="1" />
                             <span asp-validation-for="Quantidade" class="text-danger small"></span>
                         </div>
 
                         <!-- Forma de Pagamento -->
                         <div class="form-group mb-4">
-                            <label asp-for="formaPagamentoId" class="form-label fw-semibold">💳 Forma de Pagamento</label>
-                            <select asp-for="formaPagamentoId" class="form-select" asp-items="ViewBag.formaPagamentoId">
+                            <label asp-for="formaPagamentoId" class="form-label fw-semibold" style="color: #1f1919;"> Forma de Pagamento</label>
+                            <select asp-for="formaPagamentoId" class="form-select" style="background-color: #ffffff; border: 1px solid #000000; color: #1f1919;" asp-items="ViewBag.formaPagamentoId">
                                 <option value="">-- Selecione a Forma de Pagamento --</option>
                             </select>
                             <span asp-validation-for="formaPagamentoId" class="text-danger small"></span>
                         </div>
 
                         <!-- Resumo do Valor Estimado em Tempo Real -->
-                        <div class="alert alert-light border mb-4 p-3 rounded" id="painelResumo">
+                        <div class="mb-4 p-3 rounded" id="painelResumo" style="background-color: #ffe4ec; border: 1px solid #000000; color: #1f1919;">
                             <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span class="text-muted">Preço Unitário do Bolo:</span>
+                                <span style="color: #7c5658;">Preço Unitário do Bolo:</span>
                                 <strong id="resumoPrecoBolo">R$ 0,00</strong>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span class="text-muted">Acréscimo:</span>
+                                <span style="color: #7c5658;">Acréscimo:</span>
                                 <strong id="resumoPrecoAcrescimo">R$ 0,00</strong>
                             </div>
-                            <hr class="my-2" />
+                            <hr class="my-2" style="border-color: #000000;" />
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold fs-6">Total do Pedido:</span>
-                                <span class="fs-5 fw-bold text-success" id="resumoTotal">R$ 0,00</span>
+                                <span class="fs-5 fw-bold" style="color: #1f1919;" id="resumoTotal">R$ 0,00</span>
                             </div>
                         </div>
 
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary px-4 fw-semibold">Confirmar Pedido</button>
-                            <a asp-controller="GaleriaBolos" asp-action="Index" class="btn btn-outline-secondary">Voltar à Galeria</a>
-                            <a asp-action="Index" class="btn btn-outline-secondary">Meus Pedidos</a>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit" class="btn btn-dark px-4 fw-semibold">Confirmar Pedido</button>
+                            <a asp-controller="GaleriaBolos" asp-action="Index" class="btn btn-outline-dark">Voltar à Galeria</a>
+                            <a asp-action="Index" class="btn btn-outline-dark">Meus Pedidos</a>
                         </div>
                     </form>
                 </div>

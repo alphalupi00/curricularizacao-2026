@@ -4,36 +4,36 @@
     ViewData["Title"] = "Acréscimos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-    <div>
-        <h2 class="mb-1" style="color: #333;">✨ Cadastro de Acréscimos</h2>
-        <p class="text-muted mb-0">Gerencie as opções de recheios extras, coberturas e adicionais</p>
-    </div>
-    <div>
-        <a asp-action="Create" class="btn btn-success">
-            + Novo Acréscimo
-        </a>
-    </div>
-</div>
+<div class="dulcies-consulta-page">
+    <div class="dulcies-consulta-card">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2 dulcies-consulta-header">
+            <div>
+                <h2 class="mb-1" style="color: #1f1919;">Cadastro de Acréscimos</h2>
+                <p class="mb-0" style="color: #7c5658;">Gerencie as opções de recheios extras, coberturas e adicionais</p>
+            </div>
+            <div>
+                <a asp-action="Create" class="btn btn-dark">
+                    + Novo Acréscimo
+                </a>
+            </div>
+        </div>
 
-<div class="card shadow-sm border-0">
-    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+            <table class="table table-hover dulcies-table align-middle mb-0">
+                <thead>
                     <tr>
                         <th class="ps-3">Descrição</th>
                         <th class="text-center">Quantidade</th>
                         <th class="text-center">Valor Unitário</th>
                         <th class="text-center">Estoque</th>
-                        <th class="text-end pe-3">Ações</th>
+                        <th class="text-end pe-3 text-nowrap">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (!Model.Any())
                     {
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">
+                            <td colspan="5" class="text-center py-4" style="color: #7c5658;">
                                 Nenhum acréscimo cadastrado ainda. Clique em <strong>+ Novo Acréscimo</strong> para adicionar.
                             </td>
                         </tr>
@@ -46,18 +46,20 @@
                                 <td class="ps-3 fw-semibold">
                                     @Html.DisplayFor(modelItem => item.Descricao)
                                 </td>
-                                <td class="text-center text-muted">
+                                <td class="text-center" style="color: #7c5658;">
                                     @Html.DisplayFor(modelItem => item.Quantidade)
                                 </td>
-                                <td class="text-center fw-bold text-success">
+                                <td class="text-center fw-bold" style="color: #1f1919;">
                                     R$ @item.Valor.ToString("F2")
                                 </td>
                                 <td class="text-center">
                                     <span class="badge @(item.Estoque > 0 ? "bg-success" : "bg-danger") px-2 py-1">@item.Estoque un</span>
                                 </td>
-                                <td class="text-end pe-3">
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1">Editar</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                <td class="text-end pe-3 text-nowrap">
+                                    <div class="d-inline-flex align-items-center gap-1 flex-nowrap">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Editar</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Excluir</a>
+                                    </div>
                                 </td>
                             </tr>
                         }

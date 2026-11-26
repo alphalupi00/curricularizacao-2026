@@ -4,81 +4,70 @@
     ViewData["Title"] = "Cardápio de Bolos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-    <div>
-        <h2 class="mb-1" style="color: #333;">🎂 Cardápio de Bolos</h2>
-        <p class="text-muted mb-0">Gerencie os sabores, tamanhos (P, M, G) e preços cadastrados na Dulcies Bolos</p>
-    </div>
-    <div>
-        <a asp-action="Create" class="btn btn-success">
-            + Cadastrar Novo Bolo
-        </a>
-    </div>
-</div>
+<div class="dulcies-consulta-page">
+    <div class="dulcies-consulta-card">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2 dulcies-consulta-header">
+            <div>
+                <h2 class="mb-1" style="color: #1f1919;"> Cardápio de Bolos</h2>
+                <p class="mb-0" style="color: #7c5658;">Gerencie os sabores, tamanhos (P, M, G) e preços cadastrados na Dulcies Bolos</p>
+            </div>
+            <div>
+                <a asp-action="Create" class="btn btn-dark">
+                    + Cadastrar Novo Bolo
+                </a>
+            </div>
+        </div>
 
+        <form asp-action="Index" method="get" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="pesquisa"
+                       value="@Context.Request.Query["pesquisa"]"
+                       class="form-control"
+                       style="border-color: #000000; background-color: #ffffff;"
+                       placeholder="Digite o nome ou sabor do bolo..." />
 
+                <button type="submit" class="btn btn-dark">
+                    Pesquisar
+                </button>
 
-<form asp-action="Index" method="get" class="mb-3">
-    <div class="input-group">
-        <input type="text" name="pesquisa"
-       value="@Context.Request.Query["pesquisa"]"
-       class="form-control"
-       placeholder="Digite o nome ou sabor do bolo..." />
+                <a asp-action="Index" class="btn btn-outline-dark">
+                    Limpar
+                </a>
+            </div>
+        </form>
 
-        <button type="submit" class="btn btn-success">
-            Pesquisar
-        </button>
-
-        <a asp-action="Index" class="btn btn-outline-secondary">
-            Limpar
-        </a>
-    </div>
-</form>
-
-
-
-
-<div class="card shadow-sm border-0">
-    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+            <table class="table table-hover dulcies-table align-middle mb-0">
+                <thead>
                     <tr>
                         <th class="ps-3">Sabor</th>
                         <th class="text-center">Tamanho</th>
                         <th class="text-center">Valor Unitário</th>
                         <th class="text-center">Estoque</th>
-                        <th class="text-end pe-3">Ações</th>
+                        <th class="text-end pe-3 text-nowrap">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @{
-                            float totalItemValor = 0; 
-                            int totalEstoque = 0;
-
-                     }  @*precisei colocar aqui pois se por fora, ele nao reconhece o item*@
-
-
+                        float totalItemValor = 0;
+                        int totalEstoque = 0;
+                    } @*precisei colocar aqui pois se por fora, ele nao reconhece o item*@
 
                     @if (!Model.Any())
                     {
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">
+                            <td colspan="5" class="text-center py-4" style="color: #7c5658;">
                                 Nenhum bolo cadastrado no momento. Clique em <strong>+ Cadastrar Novo Bolo</strong> para adicionar.
                             </td>
                         </tr>
                     }
                     else
                     {
-
                         @foreach (var item in Model)
                         {
-
                             totalItemValor += item.Valor;
                             totalEstoque += item.Estoque;
-
-
 
                             var tamanhoBadge = item.Tamanho.ToUpper() switch
                             {
@@ -103,28 +92,30 @@
                                 <td class="text-center">
                                     <span class="badge @tamanhoBadge px-2 py-1">@tamanhoDesc</span>
                                 </td>
-                                <td class="text-center fw-bold text-success">
+                                <td class="text-center fw-bold" style="color: #1f1919;">
                                     R$ @item.Valor.ToString("F2")
                                 </td>
                                 <td class="text-center">
                                     <span class="badge @(item.Estoque > 0 ? "bg-success" : "bg-danger") px-2 py-1">@item.Estoque un</span>
                                 </td>
-                                <td class="text-end pe-3">
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1">Editar</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1">Detalhes</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                <td class="text-end pe-3 text-nowrap">
+                                    <div class="d-inline-flex align-items-center gap-1 flex-nowrap">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Detalhes</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Excluir</a>
+                                    </div>
                                 </td>
                             </tr>
                         }
-
                     }
-                    
+
                 </tbody>
             </table>
 
-           <h5> Soma de valores: R$ @totalItemValor.ToString("N2")</h5> @* F2 retorna com arredondamento, N2 retorna com separador de milhar e duas casas decimais *@
-           <h5>Total de unidades em estoque: @totalEstoque</h5>
-
+            <div class="mt-3 pt-3" style="border-top: 1px solid #000000; color: #1f1919;">
+                <h4>Soma de valores: R$ @totalItemValor.ToString("N2")</h4> @* F2 retorna com arredondamento, N2 retorna com separador de milhar e duas casas decimais *@
+                <h4 class="mb-0">Total de unidades em estoque: @totalEstoque</h4>
+            </div>
         </div>
     </div>
 </div>

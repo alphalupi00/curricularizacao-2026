@@ -4,23 +4,23 @@
     ViewData["Title"] = "Pedidos e Vendas";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-    <div>
-        <h2 class="mb-1" style="color: #333;">@(User.IsInRole("Admin") ? "📦 Todos os Pedidos e Vendas" : "🛍️ Meus Pedidos")</h2>
-        <p class="text-muted mb-0">@(User.IsInRole("Admin") ? "Controle geral de vendas de bolos, status de pedidos e formas de pagamento" : "Acompanhe os seus pedidos de bolo e status de entrega")</p>
-    </div>
-    <div>
-        <a asp-action="Create" class="btn btn-success">
-            + Novo Pedido
-        </a>
-    </div>
-</div>
+<div class="dulcies-consulta-page">
+    <div class="dulcies-consulta-card">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2 dulcies-consulta-header">
+            <div>
+                <h2 class="mb-1" style="color: #1f1919;">@(User.IsInRole("Admin") ? " Todos os Pedidos e Vendas" : " Meus Pedidos")</h2>
+                <p class="mb-0" style="color: #7c5658;">@(User.IsInRole("Admin") ? "Controle geral de vendas de bolos, status de pedidos e formas de pagamento" : "Acompanhe os seus pedidos de bolo e status de entrega")</p>
+            </div>
+            <div>
+                <a asp-action="Create" class="btn btn-dark">
+                    + Novo Pedido
+                </a>
+            </div>
+        </div>
 
-<div class="card shadow-sm border-0">
-    <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-light">
+            <table class="table table-hover dulcies-table align-middle mb-0">
+                <thead>
                     <tr>
                         <th class="ps-3">Cliente</th>
                         <th>Bolo / Tamanho</th>
@@ -29,14 +29,14 @@
                         <th class="text-center">Data do Pedido</th>
                         <th class="text-center">Status</th>
                         <th>Forma de Pagamento</th>
-                        <th class="text-end pe-3">Ações</th>
+                        <th class="text-end pe-3 text-nowrap">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (!Model.Any())
                     {
                         <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">
+                            <td colspan="8" class="text-center py-4" style="color: #7c5658;">
                                 Nenhuma venda registrada ainda. Clique em <strong>+ Novo Pedido</strong> para cadastrar.
                             </td>
                         </tr>
@@ -61,15 +61,15 @@
                                 </td>
                                 <td>
                                     <div>@item.Bolo?.Descricao</div>
-                                    <small class="text-muted">Tamanho: <span class="badge bg-light text-dark border">@item.Bolo?.Tamanho</span></small>
+                                    <small style="color: #7c5658;">Tamanho: <span class="badge text-dark border" style="background-color: #fcf3f1; border-color: #000 !important;">@item.Bolo?.Tamanho</span></small>
                                 </td>
                                 <td class="text-center fw-bold">
                                     @item.Quantidade un
                                 </td>
-                                <td class="text-center fw-bold text-success">
+                                <td class="text-center fw-bold" style="color: #1f1919;">
                                     R$ @item.Valor.ToString("F2")
                                 </td>
-                                <td class="text-center small text-muted">
+                                <td class="text-center small" style="color: #7c5658;">
                                     @item.DataVenda.ToString("dd/MM/yyyy HH:mm")
                                 </td>
                                 <td class="text-center">
@@ -78,10 +78,12 @@
                                 <td>
                                     @(item.Pagamento?.descricao ?? "-")
                                 </td>
-                                <td class="text-end pe-3">
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1">Editar</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1">Detalhes</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                <td class="text-end pe-3 text-nowrap">
+                                    <div class="d-inline-flex align-items-center gap-1 flex-nowrap">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Editar</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Detalhes</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark text-nowrap">Excluir</a>
+                                    </div>
                                 </td>
                             </tr>
                         }

@@ -53,7 +53,7 @@ namespace DULCIESBOLOS.Services
                 })
                 .ToList();
 
-
+            //tratamento caso nao haja vendas
             if (!colunasMeses.Any())
             {
                 var agora = DateTime.Now;
@@ -91,7 +91,7 @@ namespace DULCIESBOLOS.Services
                             ValorTotal = g.Sum(v => v.Valor)
                         }
                     );
-
+                
                 foreach (var col in colunasMeses)
                 {
                     if (vendasDoBoloPorMes.TryGetValue(col.Chave, out var dados) && dados.Quantidade > 0)

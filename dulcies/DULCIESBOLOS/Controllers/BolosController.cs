@@ -36,6 +36,8 @@ namespace DULCIESBOLOS.Controllers
     return View(await bolos.ToListAsync());
 }
 
+
+
         // GET: Bolos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
